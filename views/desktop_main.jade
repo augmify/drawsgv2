@@ -1,0 +1,70 @@
+extends desktop_layout
+
+block styles
+	if env == "development"|| env == "production"
+		link(rel="stylesheet", href="/css/desktop_main.css")
+	else if env == "local"
+		link(rel="stylesheet/less", href="/css/desktop_main.less")
+		script(src="/js/libs/less-1.1.5.min.js")
+
+block header
+	
+block main
+	header
+		#header_container
+			img#logo(src='/img/logoblack.png')
+			p.title A Collection of doodles about Singapore
+			img#screenshot(src='/img/ss1.png')
+	#main
+		#action 
+			.text Go to <b>drawsg.sg</b> on your phone
+
+		#images
+			each image in images
+				a.image(href='/image/#{ image._id }')
+					img(src="#{ imghost }#{ image.name }")
+
+	#about
+		a About
+		p.
+			DrawSg is a youth-initiated movement that focuses on getting everybody excited about drawing!
+		br
+		p.
+			We seek to create an exciting platform that reaches out to the youth and masses to express and share their feelings about Singapore through simple Drawings
+		br
+		p.
+			In the lead up to Singapore's 47th birthday, we hope to amass a collection of doodles of well wishes as well as personal interpretations of what Singapore truly means to each and everyone of us.
+		
+	#sponsor	
+		.row
+			.sponsor
+				a Sponsored By:
+				img#wacom(src='/img/wacom.png')
+			.collaborator 
+				a In collabration with:
+				.logo
+					img#sm(src='/img/sm.png')
+				.logo
+					img#smp(src='/img/smp.jpg')
+
+		.row
+			a Supported By:
+			.logo
+				img#ida(src='/img/ida.png')
+			.logo
+				img#mda(src='/img/mda.png')
+			.logo
+				img#scape(src='/img/scape.png')
+			//- .logo
+			//- 	img#mica(src='/img/mica.png')
+			.logo
+				img#ndp(src='/img/ndp.png')
+			.logo
+				img#nlb(src='/img/nlb.jpg')
+			.logo
+				img#sf(src='/img/sf.jpg')
+
+	footer a &#0169; 2012 DrawSg
+		a#contactus(href='mailto:social@augmify.com') contact us
+	
+block scripts

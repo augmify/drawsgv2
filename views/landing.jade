@@ -1,0 +1,46 @@
+extends layout
+
+block styles
+	if env == "development"|| env == "production"
+		link(rel="stylesheet", href="/css/landing.css")
+	else if env == "local"
+		link(rel="stylesheet/less", href="/css/landing.less")
+		script(src="/js/libs/less-1.1.5.min.js")
+
+block main
+	#main
+		#teaser 
+			img#skyline(src='/img/mbs.png')
+			p#title A collection of doodles about <b>Singapore</b>.
+		
+		form(method='post',id='loginForm',action='/doLogin')
+			input(type='text',id='username',name='username',placeholder='Username')
+			input(type='password',id='password',name='password',placeholder='Password')
+			input(type='submit',id='login',value='Login')
+		a(href='/register') Singup
+		#action 
+			#fb Login with Facebook
+
+		//- #description
+		//- 	p.text.
+		//- 		In celebration of our nation's 47th birthday, draw <b>what Singapore means to you</b>, share it, vote for awesome doodles. 
+
+		//- 	p.text.
+		//- 		Lets create an collage of uniquely singaporean doodles!
+
+		//- #images
+		//- 	.image
+		//- 	.image
+		//- 	.image
+		//- 	.image
+		//- 	.image
+		//- 	.image
+		//- 	.image
+		//- 	.image
+
+
+	footer
+	
+block scripts
+	script(type='text/javascript', src="js/libs/zepto.js")
+	script(type='text/javascript', src="js/scripts/landing.js")

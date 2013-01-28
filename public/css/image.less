@@ -1,0 +1,244 @@
+@import "base";
+/**
+* header
+*/
+@headercolor: #b52c38;
+header {
+	#avatar {
+		overflow: hidden;
+		height: 40px;
+		width: 40px;
+		border-radius: 6px;
+		background-color: white;
+		position: absolute;
+		right: 4px;
+		top: 5px;
+	}
+	#browse, #home {
+		position: absolute;
+		left: 5px;
+		top: 10px;
+		.vertical(lighten(@headercolor, 0%), lighten(@headercolor, 2%));
+		height: 20px;
+		line-height: 20px;
+		font-size: 20px;
+		border-radius: 5px;
+		color: white;
+		padding: 5px 11px;
+		border: solid 1px darken(@headercolor, 10%);
+	}
+}
+
+#overlay {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	height: 100%;
+	width: 100%;
+	#info {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -35px;
+		margin-left: -35px;
+		border-radius: 10px;
+		height: 23px;
+		width: 50px;
+		padding: 24px 10px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		span {
+			position: absolute;
+			left: 0;
+			bottom: 10px;
+			width: 100%;
+			display: block;
+			color: white;
+			line-height: 20px;
+			font-size: 17px;
+		}
+		.overlayicon {
+			position: absolute;
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-origin: content-box;
+			top: 9px;
+			left: 16px;
+			height: 25px;
+			width: 25px;
+			padding: 5px;
+			&#loading {
+				background-image: url(/img/loading.gif);
+			}
+			&#heart {
+				background-image: url(/img/heart.png);
+			}
+		}
+	}
+	#error {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -45px;
+		margin-left: -100px;
+		border-radius: 10px;
+		height: 60px;
+		width: 180px;
+		padding: 15px 10px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		font-size: 18px;
+	}
+}
+
+#main {
+	margin-top: 2px;
+	min-height: 70%;
+}
+footer {
+	border-top: dashed 1px @headercolor;
+	height: 30%;
+	background-color: #e5e5e5;
+}
+
+/**
+* Image view
+*/
+#meta {
+	margin: 10px;
+	position: relative;
+	#uimage {
+		height: 40px;
+		width: 40px;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	#uname {
+		display: block;
+		margin-left: 45px;
+		font-size: 17px;
+		font-weight: bold;
+		line-height: 17px;
+	}
+	#caption {
+		display: block;
+		margin-left: 45px;
+		margin-top: 4px;
+		line-height: 19px;
+		font-size: 19px;
+	}
+}
+#image {
+	margin: 0px 10px;
+	.box-shadow(0 1px 3px #555);
+	img {
+		background-color: white;
+		width: 100%;
+	}
+}
+#info {
+	margin: 10px;
+	.row {
+		position: relative;
+		width: 100%;
+		.icon {
+			width: 16px;
+			height: 16px;
+			padding: 2px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			background-origin: content-box;
+			background-size: 100%;
+			background-repeat: no-repeat;
+		}
+		.text {
+			font-size: 20px;
+			line-height: 20px;
+			margin-left: 25px;
+		}
+	}
+	#likes {
+		font-weight: bold;
+		.icon {
+			background-image: url(/img/heart.png);
+		}
+	}
+	#comments {
+		margin-top: 5px;
+		.icon {
+			background-image: url(/img/comment.png);
+		}
+		.text {
+			.comment {
+				font-size: 17px;
+				.name {
+					font-weight: bold;
+				}	
+			}
+			.commentstop {
+				font-weight: bold;
+				color: #555;
+				margin-bottom: 5px;
+			}
+			
+		}
+	}
+
+}
+#buttons {
+	margin: 10px;
+	height: 40px;
+	position: relative;
+	.button {
+		padding: 10px 0px;
+		border-radius: 3px;
+		height: 20px;
+		border: solid 1px darken(#e5e5e5, 10);
+		background-color: #e5e5e5;
+		width: 31%;
+		font-size: 17px;
+		text-align: center;
+		&:nth-child(1){
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		&:nth-child(2){
+			margin: auto;
+		}
+		&:nth-child(3){
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+		&#like {
+			color: white;
+			.vertical(@headercolor,darken(saturate(@headercolor,10),10));
+			&.liked {
+				.vertical(#e5e5e5,darken(#e5e5e5,10));
+				color: #555;
+			}
+		}
+		&#share {
+			@fbcolor : #3b5998;
+			.vertical(@fbcolor,darken(saturate(@fbcolor,10),10));
+			border: solid 1px #3b5998;
+			color: white;
+		}
+		&#comment {
+			background-image: url(/img/comment.png);
+			background-origin: content-box;
+			background-size: auto 100%;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	}
+
+}

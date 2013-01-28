@@ -1,0 +1,227 @@
+@import "desktopbase";
+
+body {
+	background-image: url(/img/planes.jpg);
+	background-repeat: no-repeat;
+  	background-size: 100%;
+}
+
+@headercolor: #b52c38;
+@light: #e5e5e5;
+@pagewidth: 650px;
+/**
+* header
+*/
+header {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  #header_container {
+	width: @pagewidth;
+	position: relative;
+	margin: auto;
+	padding: 0px;
+	#logo {
+		display: block;
+		padding: 100px 0px 0px 5px;
+		height: 100px;
+	}
+	.title {
+		font-weight: 300;
+		padding-left: 5px;
+	}
+	b {
+		color: darken(@headercolor,5);
+		font-size: 25px;
+	}
+	#screenshot {
+		width: 260px;
+		position: absolute;
+		top: 70px;
+		right: 0px;
+		z-index: 2;
+	}
+	#links {
+		position: absolute;
+		top: 5px;
+		left: 40px;
+		a {
+			padding: 0 10px;
+			font-size: 18px;
+			color: #555;
+		}
+	}
+  }
+}
+/**
+* Main
+*/
+#main {
+	height: 300px;
+	#images {
+		float: left;
+		clear: both;
+		margin: 10px 0px 0px 0px;
+		width: 378px;
+		.image {
+			height: 85px;
+			width: 85px;
+			margin-top: 3px;
+			margin-right: 3px;
+			border: solid 1px @light;
+			float: left;
+			overflow: hidden;
+			background-color: white;
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	#action {
+		margin: 10px 0px 0px 0px;
+		border-radius: 10px;
+		padding: 0px;
+		font-size: 20px;
+		line-height: 20px;
+		float: left;
+		.icon {
+			width: 20px;
+			height: 40px;
+			padding: 5px 5px 5px 0px;
+			background-image: url(/img/mobile.png);
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-origin: content-box;
+			float: left;
+		}
+		.text {
+			float: left;
+			height: 20px;
+			padding: 12px 5px;
+		}
+		b {
+			color: @headercolor;
+			font-size: 25px;
+		}
+	}
+}
+#container {
+	width: @pagewidth;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 0px 15px 10px 15px;
+	position: relative;
+	border-radius: 2px;
+	clear: both;
+	.trans-background(#ffffff, 0.5);
+}
+#about {
+	padding-top: 10px !important;
+	letter-spacing: normal;
+	a {
+		font-weight: 600;
+		font-size: 30px;
+		line-height: 35px;
+		letter-spacing: -2px;
+	}
+}
+#sponsor {
+	height: 400px;
+	margin-top: 10px;
+	padding-top: 30px !important;
+	// height: 70px;
+	// border: solid 1px;
+	letter-spacing: normal;
+	position: relative;
+	a {
+		display: block;
+		font-weight: 600;
+		padding-top: 10px;
+		font-size: 20px;
+		line-height: 25px;
+		letter-spacing: -2px;
+	}
+	.logo {
+		height: 90px;
+		float: left;
+		margin-right: 23px;
+	}
+	img {
+		
+	}
+	.row {
+		clear: both;
+		position: relative;
+	}
+	#wacom {
+		width :100px;
+	}
+	#ida {
+		width: 90px;
+	}
+	#mda {
+		margin-top: 7px;
+		width: 110px;
+	}
+	#scape {
+		margin-top: 15px;
+		width: 120px;
+	}
+	#starhub {
+		margin-top: 10px;
+		width: 130px;
+	}
+	#mica {
+		margin-top: 20px;
+		width: 200px;
+	}
+	#ndp {
+		width: 100px;
+	}
+	#nlb {
+		width: 100px;
+	}
+	#sf {
+		height: 100px;
+	}
+	#sm {
+		height: 80px;
+		background: #212121;
+		margin-top: 10px;
+	}
+	#smp {
+		height: 100px;
+	}
+	.sponsor {
+		width: 30%;
+		float:left;
+	}
+	.collaborator {
+		width: 60%;
+		float:left;
+	}
+}
+
+.image {
+	width: @pagewidth/10 - 6;
+	height: @pagewidth/10 - 6;
+	border: solid 1px #e5e5e5;
+	float: left;
+	margin: 2px;
+	overflow: none;
+	background-color: white;
+	img {
+		width: 100%;
+		height: 100%;
+	}
+}
+footer {
+	font-size: 19px;
+	#contactus {
+		float: right;
+		text-decoration: underline;
+		color: #555;
+	}
+}

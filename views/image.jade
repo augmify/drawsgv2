@@ -1,0 +1,79 @@
+extends layout
+
+block overlay
+	#info 
+		span loading
+		.overlayicon#loading
+
+block styles
+	if env == "development"|| env == "production"
+		link(rel="stylesheet", href="/css/image.css")
+	else if env == "local"
+		link(rel="stylesheet/less", href="/css/image.less")
+		script(src="/js/libs/less-1.1.5.min.js")	
+
+block append header
+	if user == "guest" || newimg
+		#home home
+	else
+		#browse browse
+
+	if user != "guest"
+		img#avatar(src="https://graph.facebook.com/#{ user.id }/picture?type=square")
+
+block main
+	#main
+		#meta
+			img#uimage(src="https://graph.facebook.com/#{ img.uid }/picture?type=square")
+			a#uname= img.uname
+			a#caption= img.caption
+		#image
+			img(src='#{ imghost }#{ img.name }')
+		#info
+			.row#likes
+				.icon
+				.text <span id='likescount'>#{ img.likes.length }</span> likes
+			//- .row#comments
+			//- 	.icon
+			//- 	.text 
+			//- 		.commentstop view all #{ img.comments.length } comments
+			//- 		.comment
+			//- 			span.name Vestibulum 
+			//- 			a id ligula porta felis euismod semper.
+			//- 		.comment
+			//- 			span.name Vestibulum 
+			//- 			a id ligula porta felis euismod semper.
+			//- 		.comment
+			//- 			span.name Vestibulum 
+			//- 			a id ligula porta felis euismod semper.
+			//- 		.comment
+			//- 			span.name Vestibulum 
+			//- 			a id ligula porta felis euismod semper.
+			//- 		.comment
+			//- 			span.name Vestibulum 
+			//- 			a id ligula porta felis euismod semper.
+
+		#buttons
+			if user == "guest"
+				.button#share share	
+			else 
+				if liked
+					.button#like.liked unlike
+				else
+					.button#like like
+
+				//- .button#comment
+				.button#share share
+
+				if owner
+					.button#delete delete
+
+	input#hidden_at(type="hidden",value="#{user.accessToken}")
+	input#hidden_id(type="hidden",value="#{user.id}")
+	input#hidden_shared(type="hidden", value="#{shared}")
+		
+	footer
+
+block scripts
+	script(type='text/javascript', src="/js/libs/zepto.js")
+	script(type='text/javascript', src="/js/scripts/image.js")

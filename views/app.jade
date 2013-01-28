@@ -1,0 +1,28 @@
+extends layout
+
+block styles
+	if env == "development"|| env == "production"
+		link(rel="stylesheet", href="/css/app.css")
+	else if env == "local"
+		link(rel="stylesheet/less", href="/css/app.less")
+		script(src="/js/libs/less-1.1.5.min.js")	
+
+block append header
+	#logout logout
+	img#avatar(src="https://graph.facebook.com/#{ user.id }/picture?type=square")
+
+block main
+	#main
+		#teaser 
+			img#skyline(src='/img/planessmall.jpg')
+			p#title A collection of doodles about <b>Singapore</b>.
+		
+		#nav
+			#draw.button Draw
+
+			#browse.button Browse
+	footer
+
+block scripts
+	script(type='text/javascript', src="js/libs/zepto.js")
+	script(type='text/javascript', src="js/scripts/app.js")

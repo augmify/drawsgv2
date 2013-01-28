@@ -1,0 +1,17 @@
+extends layout
+
+block styles
+	if env == "development"|| env == "production"
+		link(rel="stylesheet", href="/css/landing.css")
+	else if env == "local"
+		link(rel="stylesheet/less", href="/css/landing.less")
+		script(src="/js/libs/less-1.1.5.min.js")
+block main		
+	form(method='post',action='/doRegister')
+		input(type='text',id='username',name='username',placeholder='Username')
+		br
+		input(type='password',id='password',name='password',placeholder='Password')
+		br
+		input(type='password',id='confirmpassword',name='confirmpassword',placeholder='Confirm Password')
+		br
+		input(type='submit',id='register',value='Register')

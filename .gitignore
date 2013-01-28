@@ -1,0 +1,9 @@
+node_modules/
+tmp/
+build/
+*.log
+uploads/
+*~
+*.swp
+dump.rdb
+.git

@@ -1,0 +1,360 @@
+@import "base";
+
+@light: #e5e5e5;
+
+#overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	height: 100%;
+	width: 100%;
+	#info {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -35px;
+		margin-left: -35px;
+		border-radius: 10px;
+		height: 23px;
+		width: 50px;
+		padding: 24px 10px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		span {
+			position: absolute;
+			left: 0;
+			bottom: 10px;
+			width: 100%;
+			display: block;
+			color: white;
+			line-height: 20px;
+			font-size: 17px;
+		}
+		#loading {
+			position: absolute;
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-image: url(/img/loading.gif);
+			background-origin: content-box;
+			top: 9px;
+			left: 16px;
+			height: 25px;
+			width: 25px;
+			padding: 5px;
+
+
+		}
+	}
+	#error {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -45px;
+		margin-left: -100px;
+		border-radius: 10px;
+		height: 60px;
+		width: 180px;
+		padding: 15px 10px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		font-size: 18px;
+	}
+	#caption {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -90px;
+		margin-left: -120px;
+		border-radius: 10px;
+		height: 180px;
+		width: 240px;
+		padding: 0px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		font-size: 22px;
+		#close {
+			position: absolute;
+			top: -10px;
+			right: -10px;
+			height: 25px;
+			width: 25px;
+			padding: 2px;
+			background-image: url(/img/close.png);
+			background-color: white;
+			background-origin: content-box;
+			background-repeat: no-repeat;
+			border-radius: 100px;
+			background-size: 100%;
+		}
+		#title {
+			display: block;
+			margin-top: 10px;
+			padding: 5px;
+			font-weight: bold;
+			line-height: 22px;
+			height: 22px;
+		}
+		textarea {
+			width: 190px;
+			height: 50px;
+			border-radius: 5px;
+			padding: 5px;
+			margin: 5px;
+			font-family: inherit;
+			font-size: inherit;
+			outline:none;
+			resize: none;
+		}
+		#submit {
+			display: block;
+			font-size: 20px;
+			width: 190px;
+			padding: 5px;
+			margin: 5px auto;
+			border-radius: 5px;
+			border:solid 1px darken(@headercolor,10);
+			.vertical(@headercolor,darken(saturate(@headercolor,10),10));
+		}
+	}
+}
+
+/**
+* Header
+*/
+header {
+	z-index: 1;
+	#logo {
+		height : 30px;
+	}
+	#toolbar {
+		z-index: 10;
+		position: absolute;
+		left: 5px;
+		top: 5px;
+		.vertical(lighten(@headercolor, 0%), lighten(@headercolor, 2%));
+		height: 20px;
+		line-height: 17px;
+		font-size: 17px;
+		border-radius: 5px;
+		color: white;
+		padding: 5px 11px;
+		border: solid 1px darken(@headercolor, 10%);
+	}
+	#save {
+		position: absolute;
+		right: 5px;
+		top: 5px;
+		.vertical(lighten(@headercolor, 0%), lighten(@headercolor, 2%));
+		height: 20px;
+		line-height: 17px;
+		font-size: 17px;
+		border-radius: 5px;
+		color: white;
+		padding: 5px 11px;
+		border: solid 1px darken(@headercolor, 10%);
+	}
+}
+footer {
+	margin-top: 20px;
+	border-top: dashed 1px @headercolor;
+	height: 30%;
+	background-color: #e5e5e5;
+}
+
+#slider {
+	display: none;
+	opacity: 0;
+	z-index: 1;
+	position: absolute;
+	color: black;
+	.trans-background(#FFFFFF, 0.7);
+	border: solid 1px darken(@light, 20);
+	top: 40px;
+	left: -2px;
+	width: 200px;
+	height: 200px;
+	.box {
+		margin: 5px;
+		height: 40px;
+		border-bottom: solid 1px #e5e5e5;
+		padding: 5px;
+		a {
+			display: block;
+			font-size: 20px;
+			height: 20px;
+			margin: 20px 0px 0px 0px;
+			font-weight: bold;
+			float: left;
+		}
+		.button {
+			border-radius: 5px;
+			margin-left: 5px;
+			float: right;
+			width: 40px;
+			height: 40px;
+			border: solid 1px @light;
+			&.active {
+				background-color: @headercolor;
+				border: solid 1px @headercolor;
+				.pensize {
+					background-color: white;
+				}
+			}
+			.pensize {
+				background-color: black;	
+				border-radius: 100px;
+				position: relative;
+			}
+			&.small {
+				.pensize {
+					top: 18px;
+					height: 5px;
+					width: 5px;
+					margin: auto;
+				}
+			}
+			&.medium {
+				.pensize {
+					top: 16px;
+					height: 10px;
+					width: 10px;
+					margin: auto;
+				}
+			}
+			&.large {
+				.pensize {
+					top: 12px;
+					height: 17px;
+					width: 17px;
+					margin: auto;
+				}
+			}
+			&.xlarge {
+				.pensize {
+					top: 8px;
+					height: 23px;
+					width: 23px;
+					margin: auto;
+				}
+			}
+		}
+	}
+	#colors {
+		a {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+		.color {
+			height: 35px;
+			width: 35px;
+			margin: 3px 2px;
+			float: left;
+			border: solid 1px;
+			border-radius: 10px;
+		}
+	}
+}
+
+/**
+* main
+*/
+#main {
+	margin-top: 2px;
+	min-height: 70%;
+}
+#canvas {
+	display: block;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	background-color: white;
+	&.ready {
+		border-radius: 2px;
+		border: solid 1px darken(@light, 20%);
+	}
+}
+//css hacks
+.once {
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+.after {
+	padding-bottom: 50px;
+}
+#palette {
+	margin: 0px 5px;
+	height: 50px;
+	background-color: white;
+	#tools {
+		.color {
+			height: 30px;
+			width: 30px;
+			margin: 10px 2px;
+			float: left;
+			border: solid 1px;
+			border-radius: 10px;
+		}
+		.button {
+			float: right;
+			margin: 5px 0px;
+			height: 30px;
+			padding: 5px;
+			width: 30px;
+			background-repeat: no-repeat;
+			background-origin: content-box;
+			background-size: 100%;
+		}
+		#reset {
+			background-image: url(/img/trash.png);
+		}
+		#erase {
+			background-image: url(/img/eraser.jpg);
+		}
+	}
+}
+
+
+// colors
+@black: #000000;
+@brown: #3D2423;
+@red: #A61414;
+@green: #109E31;
+@yellow: #F7DD00;
+@blue: #1747A6;
+@white: #ffffff;
+
+
+.color(@color){
+	color: darken(@color,10%);
+	background-color: @color;
+}
+
+#black {
+	.color(@black);
+}
+#brown {
+	.color(@brown);
+}
+#red {
+	.color(@red);
+}
+#green {
+	.color(@green);
+}
+#yellow {
+	.color(@yellow);
+}
+#blue {
+	.color(@blue);
+}
+#white {
+	color: @white;
+	background-color: @white;
+	border: solid 1px darken(@light,40%) !important;
+}
