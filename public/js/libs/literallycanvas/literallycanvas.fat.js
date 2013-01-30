@@ -7242,7 +7242,7 @@
             imageURLPrefix: "lib/img",
             keyboardShortcuts: true,
             sizeToContainer: true,
-            toolClasses: [ LC.Pencil, LC.Eraser, LC.LineTool, LC.RectangleTool, LC.Pan, LC.EyeDropper ]
+            toolClasses: [ LC.Pencil, LC.Eraser, LC.LineTool, LC.RectangleTool, LC.EllipseTool,LC.Pan, LC.EyeDropper ]
         }, opts);
         $el = $(el);
         $el.addClass("literally");
@@ -7502,6 +7502,31 @@
         };
         return Rectangle;
     }(LC.Shape);
+    LC.Ellipse = function(_super) {
+        __extends(Ellipse, _super);
+        function Ellipse(x, y, strokeWidth, color) {
+            this.x = x;
+            this.y = y;
+            this.strokeWidth = strokeWidth;
+            this.color = color;
+            this.width = 0;
+            this.height = 0;
+        }
+        Ellipse.prototype.draw = function(ctx) {
+            var k = (this.width/0.75)/2;
+            var w = this.width / 2;
+            var h = this.height / 2;
+            ctx.lineWidth = this.strokeWidth;
+            ctx.strokeStyle = this.color;
+            ctx.beginPath();
+            ctx.moveTo(this.x,this.y - h);
+            ctx.bezierCurveTo(this.x+k, this.y-h, this.x+k, this.y+h, this.x, this.y+h);
+            ctx.bezierCurveTo(this.x-k, this.y+h, this.x-k, this.y-h, this.x, this.y-h);
+            return ctx.stroke();
+        };
+        return Ellipse;
+    }(LC.Shape);
+
     LC.Line = function(_super) {
         __extends(Line, _super);
         function Line(x1, y1, strokeWidth, color) {
@@ -7799,6 +7824,32 @@
         };
         return RectangleTool;
     }(LC.Tool)//(LC.BrushWidthOptionTool);
+    LC.EllipseTool = function(_super) {
+        __extends(EllipseTool, _super);
+        function EllipseTool(opts) {
+            this.opts = opts;
+            //this.strokeWidth = 5;
+            EllipseTool.__super__.constructor.apply(this, arguments);
+        }
+        EllipseTool.prototype.title = "Ellipse";
+        EllipseTool.prototype.cssSuffix = "ellipse";
+        EllipseTool.prototype.buttonContents = function() {
+            return "<img src='" + this.opts.imageURLPrefix + "/ellipse.png'>";
+        };
+        EllipseTool.prototype.begin = function(x, y, lc) {
+            return this.currentShape = new LC.Ellipse(x, y, LC.penStrokeWidth/*this.strokeWidth*/, lc.primaryColor);
+        };
+        EllipseTool.prototype["continue"] = function(x, y, lc) {
+            this.currentShape.width = x - this.currentShape.x;
+            this.currentShape.height = y - this.currentShape.y;
+            return lc.update(this.currentShape);
+        };
+        EllipseTool.prototype.end = function(x, y, lc) {
+            return lc.saveShape(this.currentShape);
+        };
+        return EllipseTool;
+    }(LC.Tool)//(LC.BrushWidthOptionTool);
+
     LC.LineTool = function(_super) {
         __extends(LineTool, _super);
         function LineTool(opts) {
