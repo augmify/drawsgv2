@@ -7522,6 +7522,7 @@
             ctx.moveTo(this.x,this.y - h);
             ctx.bezierCurveTo(this.x+k, this.y-h, this.x+k, this.y+h, this.x, this.y+h);
             ctx.bezierCurveTo(this.x-k, this.y+h, this.x-k, this.y-h, this.x, this.y-h);
+            ctx.closePath();
             return ctx.stroke();
         };
         return Ellipse;
