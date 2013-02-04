@@ -54,6 +54,8 @@ app.get('/likes', routes.likes);
 app.get('/image/:imgid/:shared?', routes.image);
 app.get('/fb/image/:imgid', routes.fbimage);
 
+app.get('/profile/:userid',routes.profile);
+
 app.get('/register',routes.register);
 //POST
 app.post('/image', routes.imageupload);

@@ -24,7 +24,8 @@ block append header
 block main
 	#main
 		#meta
-			img#uimage(src="https://graph.facebook.com/#{ img.uid }/picture?type=square")
+			a(href="/profile/#{ img.uid }")
+				img#uimage(src="https://graph.facebook.com/#{ img.uid }/picture?type=square")
 			a#uname= img.uname
 			a#caption= img.caption
 		#image

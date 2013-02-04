@@ -65,6 +65,34 @@ exports.browse = function(req, res){
     res.render('browse', variables);
   });
 };
+
+
+exports.profile = function(req,res){
+  if (!req.loggedIn) return res.redirect('/');
+  var userid = req.params.userid;
+  mongo.findUserById(userid, function(err,users){
+    if (err || !users){
+      //smth went wrong handle error
+      res.send("error");
+      return;
+    }
+    var variables = utils.bootstrap(req);
+    console.log(users);
+    variables.user = req.user;
+    variables.other = users;
+    variables.imghost = utils.imagehost;
+    mongo.ImagesByUser(userid,function(err,images){
+        if(err){
+            res.send("error");
+            return;
+        }
+        variables.images = images;
+        res.render('profile',variables);
+    });
+  });
+};
+
+
 exports.draw = function(req, res){
   if (!req.loggedIn) return res.redirect('/');
 

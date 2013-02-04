@@ -1,0 +1,43 @@
+extends layout
+
+block overlay
+	#info 
+		span loading
+		.overlayicon#loading
+
+block styles
+	if env == "development"|| env == "production"
+		link(rel="stylesheet", href="/css/image.css")
+		link(rel="stylesheet", href="/css/browse.css")
+	else if env == "local"
+		link(rel="stylesheet/less", href="/css/image.less")
+		link(rel="stylesheet", href="/css/browse.css")
+		script(src="/js/libs/less-1.1.5.min.js")	
+
+block append header
+		#home home
+
+	if user != "guest"
+		img#avatar(src="https://graph.facebook.com/#{ user.id }/picture?type=square")
+
+block main
+	#main
+		#meta
+			
+			img#uimage(src="https://graph.facebook.com/#{ other.id }/picture?type=large")
+			a#uname= other.name
+			a#caption= images.length
+		#main.clearfix
+			#images
+				if images.length > 0
+					each image in images
+						a.image(href='/image/#{ image._id }')
+							img(src="#{ imghost }#{ image.name }")
+				else
+					#{other.name} has no drawings now!
+
+	footer
+
+block scripts
+	script(type='text/javascript', src="/js/libs/zepto.js")
+	script(type='text/javascript', src="/js/scripts/image.js")
