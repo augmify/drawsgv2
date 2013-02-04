@@ -7516,12 +7516,14 @@
             var k = (this.width/0.75)/2;
             var w = this.width / 2;
             var h = this.height / 2;
+            var x = this.x + k;
+            var y = this.y + h;
             ctx.lineWidth = this.strokeWidth;
             ctx.strokeStyle = this.color;
             ctx.beginPath();
-            ctx.moveTo(this.x,this.y - h);
-            ctx.bezierCurveTo(this.x+k, this.y-h, this.x+k, this.y+h, this.x, this.y+h);
-            ctx.bezierCurveTo(this.x-k, this.y+h, this.x-k, this.y-h, this.x, this.y-h);
+            ctx.moveTo(x,y - h);
+            ctx.bezierCurveTo(x+k, y-h, x+k, y+h, x, y+h);
+            ctx.bezierCurveTo(x-k, y+h, x-k, y-h, x, y-h);
             ctx.closePath();
             return ctx.stroke();
         };
