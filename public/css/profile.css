@@ -56,8 +56,7 @@ text-align: center;
 }
 
 #images .image {
-width: 75px;
-height: 75px;
+width: 25%;
 display: block;
 background-color: white;
 overflow: hidden;
