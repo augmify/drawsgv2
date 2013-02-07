@@ -1,0 +1,48 @@
+#meta {
+margin: 10px;
+position: relative;
+background: grey;
+}
+
+#meta #pimage {
+height: 80px;
+width: 80px;
+position: absolute;
+left: 10px;
+top: 10px;
+}
+
+#meta #pname {
+display: block;
+margin-left: 10px;
+font-size: 24px;
+font-weight: 500;
+line-height: 30px;
+color: white;
+}
+
+.container {
+margin-left: 95px;
+}
+
+.statistic {
+width: 80px;
+display: inline-block;
+margin: 5px;
+}
+
+.profile-number {
+line-height: 35px;
+text-align: center;
+font-size: 25px;
+background: rgb(0, 173, 255);
+color: white;
+}
+
+.profile-type {
+line-height: 20px;
+font-size: 12px;
+color: white;
+background: rgb(50, 117, 202);
+text-align: center;
+}

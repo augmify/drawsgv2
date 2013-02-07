@@ -8,10 +8,10 @@ block overlay
 block styles
 	if env == "development"|| env == "production"
 		link(rel="stylesheet", href="/css/image.css")
-		link(rel="stylesheet", href="/css/browse.css")
+		link(rel="stylesheet", href="/css/profile.css")
 	else if env == "local"
 		link(rel="stylesheet/less", href="/css/image.less")
-		link(rel="stylesheet", href="/css/browse.css")
+		link(rel="stylesheet", href="/css/profile.css")
 		script(src="/js/libs/less-1.1.5.min.js")	
 
 block append header
@@ -24,9 +24,20 @@ block main
 	#main
 		#meta
 			
-			img#uimage(src="https://graph.facebook.com/#{ other.id }/picture?type=large")
-			a#uname= other.name
-			a#caption= images.length
+			img#pimage(src="https://graph.facebook.com/#{ other.id }/picture?type=square")
+			.container
+				a#pname= other.name			
+				.subconotainer
+					.statistic
+						.profile-number #{images.length}
+						.profile-type doodles
+					.statistic
+						.profile-number 0
+						.profile-type followers
+					.statistic
+						.profile-number 0
+						.profile-type following
+						
 		#main.clearfix
 			#images
 				if images.length > 0
