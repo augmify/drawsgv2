@@ -46,3 +46,23 @@ color: white;
 background: rgb(50, 117, 202);
 text-align: center;
 }
+
+#images {
+margin-left: 3px;
+margin-bottom: 50px;
+float: left;
+width: 100%;
+text-align: center;
+}
+
+#images .image {
+width: 75px;
+height: 75px;
+display: block;
+background-color: white;
+overflow: hidden;
+float: left;
+margin-top: 3px;
+border: solid 1px #e5e5e5;
+margin-right: 3px;
+}
