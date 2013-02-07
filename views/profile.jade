@@ -43,7 +43,7 @@ block main
 				if images.length > 0
 					each image in images
 						a.image(href='/image/#{ image._id }')
-							img(src="#{ imghost }#{ image.name }")
+							img.realimg(src="#{ imghost }#{ image.name }")
 				else
 					#{other.name} has no drawings now!
 

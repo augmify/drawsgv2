@@ -3,4 +3,7 @@ $(function(){
 	var size = width/4 - 2 - 3;
 	$(".image").width(size);
 	$(".image").height(size);
+	$(".realimg").width(size);
+	$(".realimg").height(size);
+
 });
