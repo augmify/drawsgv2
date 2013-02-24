@@ -65,3 +65,28 @@ margin-top: 3px;
 border: solid 1px #e5e5e5;
 margin-right: 3px;
 }
+
+
+header #follow {
+position: absolute;
+right: 5px;
+top: 10px;
+background-color: #bd2e3b;
+background-repeat: repeat-x;
+background-image: -khtml-gradient(linear, left top, left bottom, from(#b52c38), to(#bd2e3b));
+background-image: -moz-linear-gradient(#b52c38, #bd2e3b);
+background-image: -ms-linear-gradient(#b52c38, #bd2e3b);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b52c38), color-stop(100%, #bd2e3b));
+background-image: -webkit-linear-gradient(#b52c38, #bd2e3b);
+background-image: -o-linear-gradient(#b52c38, #bd2e3b);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b52c38', endColorstr='#bd2e3b', GradientType=0);
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#b52c38', endColorstr='#bd2e3b', GradientType=0)";
+background-image: linear-gradient(#b52c38, #bd2e3b);
+height: 20px;
+line-height: 20px;
+font-size: 20px;
+border-radius: 5px;
+color: white;
+padding: 5px 11px;
+border: solid 1px #8c222b;
+}
