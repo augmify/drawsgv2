@@ -11,7 +11,7 @@ block styles
 		link(rel="stylesheet", href="/css/profile.css")
 	else if env == "local"
 		link(rel="stylesheet/less", href="/css/image.less")
-		link(rel="stylesheet", href="/css/profile.css")
+		link(rel="stylesheet/less", href="/css/profile-new.less")
 		script(src="/js/libs/less-1.1.5.min.js")	
 
 block append header
@@ -26,9 +26,8 @@ block main
 		#meta
 			
 			img#pimage(src="https://graph.facebook.com/#{ other.id }/picture?type=square")
-			.container
-				a#pname= other.name			
-				.subconotainer
+			.meta-container
+				.subcontainer
 					.statistic
 						.profile-number #{images.length}
 						.profile-type doodles
@@ -38,13 +37,27 @@ block main
 					.statistic
 						.profile-number 0
 						.profile-type following
-						
-		#main.clearfix
+				.edit-btn.phone-style-btn
+					|Edit Your Profile
+					img.phone-style-btn-arrow(src="/img/right-grey-arrow.png")
+			.namecontainner
+				a#pname= other.name
+		#action-bar
+			.action-item.action-item-small.actived-action
+				img(src="/img/music.png")
+			.action-item.action-item-small
+				img(src="/img/pan.png")
+			.action-item.action-item-lastone
+				img(src="/img/map-marker.png")
+				|&nbsp;Photo map&nbsp
+				img.phone-style-btn-arrow(src="/img/right-grey-arrow.png")
+		#image-grid
 			#images
 				if images.length > 0
 					each image in images
-						a.image(href='/image/#{ image._id }')
-							img.realimg(src="#{ imghost }#{ image.name }")
+						div.img-item
+							a.img-link(href='/image/#{ image._id }')
+								img(src="#{ imghost }#{ image.name }")
 				else
 					#{other.name} has no drawings now!
 

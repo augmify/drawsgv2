@@ -3,9 +3,20 @@
 * header
 */
 @headercolor: #b52c38;
+
+.header-button() {
+	.vertical(lighten(@headercolor, 0%), lighten(@headercolor, 2%));
+	height: 20px;
+	line-height: 20px;
+	font-size: 20px;
+	border-radius: 5px;
+	color: white;
+	padding: 5px 11px;
+	border: solid 1px darken(@headercolor, 10%);
+}
 header {
 	#avatar {
-		overflow: hidden;
+        overflow: hidden;
 		height: 40px;
 		width: 40px;
 		border-radius: 6px;
@@ -18,15 +29,15 @@ header {
 		position: absolute;
 		left: 5px;
 		top: 10px;
-		.vertical(lighten(@headercolor, 0%), lighten(@headercolor, 2%));
-		height: 20px;
-		line-height: 20px;
-		font-size: 20px;
-		border-radius: 5px;
-		color: white;
-		padding: 5px 11px;
-		border: solid 1px darken(@headercolor, 10%);
+        .header-button();
 	}
+	#follow{
+    	position: absolute;
+		right: 5px;
+		top: 10px;
+        .header-button();
+    }
+    
 }
 
 #overlay {
@@ -97,6 +108,7 @@ header {
 }
 
 #main {
+    background-color: #efefef;
 	margin-top: 2px;
 	min-height: 70%;
 }

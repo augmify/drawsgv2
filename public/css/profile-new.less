@@ -1,0 +1,157 @@
+@common-bg-color: #fafafa;
+@common-blk-border: #efefef;
+/* */
+@common-blk-border-radius: 10px;
+@profile-img-size: 80px;
+@profile-img-padding: 8px;
+#meta {
+    background-color: @common-bg-color;
+    border: 2px solid @common-blk-border;
+    border-radius: @common-blk-border-radius;
+    
+    #pimage {
+        position: absolute;
+        border-right: 2px solid @common-blk-border;
+        height: @profile-img-size;
+        width: @profile-img-size;
+        left: 0;
+        top: 0;
+        padding: @profile-img-padding;
+    }
+    .meta-container {
+        position: relative;
+        padding-left: @profile-img-size + @profile-img-padding * 2;
+        height: @profile-img-size + @profile-img-padding * 2;
+        @subcontainer-height: 45px;
+        .subcontainer{
+            height: @subcontainer-height;
+            position: relative;
+            border-bottom: 2px solid @common-blk-border;
+            .statistic {
+                position: relative;
+                width: 33%;
+                min-width: 60px;
+                display: inline-block;
+                text-align: center;
+                .profile-number {
+                    font-weight: 700;
+                    font-size: 24px;
+                    line-height: 25px;
+                    text-overflow: ellipsis;
+                }
+                .profile-type {
+                    font-size: 16px;
+                }
+            }
+            .statistic:before{
+                content: '';
+                position: absolute;
+                width: 2px;
+                height: @subcontainer-height;
+                background-color: @common-blk-border;
+                left: 0px;
+            }
+        } 
+        @edit-btn-height: 45px;
+        .phone-style-btn {
+            position: relative;
+            line-height: @edit-btn-height;
+            padding-left: 15px;
+            cursor: pointer;
+        }
+        .phone-style-btn-arrow {
+            position: absolute;
+            display: block;
+            height: 18px;
+            width: 18px;
+            right: 25px;
+            top: (@edit-btn-height - 18)/2;
+        }
+    }
+    .namecontainner {
+        border-top: 2px solid @common-blk-border;
+        padding: 8px;
+        #pname {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+}
+
+@action-bar-height: 50px;
+#action-bar{
+    border: 2px solid @common-blk-border;
+    margin: 10px;
+    position: relative;
+    background-color: @common-bg-color;
+    border-radius: @common-blk-border-radius;
+    @action-item-width: 60px;
+    @action-item-padding: 5px;
+    .action-item {
+        position: relative;
+        display: inline-block; 
+        text-align: center;
+        border-left: 2px solid @common-blk-border;
+        padding: @action-item-padding;
+        img {
+            width: 18px;
+            height: 18px;
+            filter: grayscale(50%);
+        }
+    }
+    .action-item:hover {
+        cursor: pointer;
+    }
+    .action-item:first-child {
+        border-left: none !important;
+    }
+    .action-item-small{
+        width: @action-item-width;
+    }
+    .action-item-lastone{
+        position: absolute;
+        right: 0px;
+        left: 150px;
+    }
+    .actived-action img {
+        filter: grayscale(100%);
+    }
+    .actived-action:before {
+        content: '';
+        position: absolute;
+        display: block;
+        left: @action-item-width/2 + @action-item-padding - 8;
+        bottom: -6px;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 6px solid @common-blk-border;
+    }
+    .actived-action:after {
+        content: '';
+        position: absolute;
+        display: block;
+        left: @action-item-width/2 + @action-item-padding - 8;
+        bottom: -4px;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 6px solid @common-bg-color;
+    }
+}
+
+#image-grid {
+    margin: 10px;
+    over-flow: auto;
+    .img-item {
+        display: inline-block;
+        padding: 5px;
+        border: 1px solid @common-blk-border;
+        .img-link{
+            img {
+                width: 112px;
+                height: 112px;
+            }
+        }
+    }
+}
