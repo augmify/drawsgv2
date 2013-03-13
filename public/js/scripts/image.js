@@ -110,8 +110,13 @@ $(function(){
 		$("#submit").on('click', function(){
 				alert($("#captiontext").val());
 				postcomment($("#captiontext").val());
+				$("#overlay").hide();
+				}, 300);
 			});
 		$("#close").on('click', function(){
+			setTimeout(function(){
+			$("#overlay").hide();
+		}, 300);
 		});
 	};	
 
