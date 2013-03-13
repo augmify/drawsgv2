@@ -100,6 +100,21 @@ $(function(){
 
 		});
 	};
+
+	var comment = function(){
+		var caption = _.template("<div id='caption'><div id='close'></div><a id='title'>Add a Comment!</a><textarea id='captiontext' autofocus name='caption'></textarea><a id='submit'>Submit</a></div>");
+		$("#overlay").html(caption()).show();
+
+		$("#captiontext").focus();
+			
+		$("#submit").on('click', function(){
+				alert($("#captiontext").val());
+				postcomment($("#captiontext").val());
+			});
+		$("#close").on('click', function(){
+		});
+	};	
+
 	var share = function(){
 		window.location.href = '/fb' + window.location.pathname;
 	};
