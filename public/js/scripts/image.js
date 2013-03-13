@@ -132,7 +132,7 @@ $(function(){
 		$("#home").tap(app);
 		$("#like").tap(like);
 		$("#delete").tap(del);
-		$("#comment").tap(postcomment);
+		$("#comment").tap(comment);
 		$("#share").tap(share);
 
 	} else {
@@ -140,7 +140,7 @@ $(function(){
 		$("#home").on('click', app);
 		$("#like").on('click', like);
 		$("#share").on('click', share);
-		$("#comment").on(postcomment);
+		$("#comment").on(comment);
 		$("#delete").on('click',del);
 	}
 });
