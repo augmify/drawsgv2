@@ -34,25 +34,25 @@ block main
 			.row#likes
 				.icon
 				.text <span id='likescount'>#{ img.likes.length }</span> likes
-			//- .row#comments
-			//- 	.icon
-			//- 	.text 
-			//- 		.commentstop view all #{ img.comments.length } comments
-			//- 		.comment
-			//- 			span.name Vestibulum 
-			//- 			a id ligula porta felis euismod semper.
-			//- 		.comment
-			//- 			span.name Vestibulum 
-			//- 			a id ligula porta felis euismod semper.
-			//- 		.comment
-			//- 			span.name Vestibulum 
-			//- 			a id ligula porta felis euismod semper.
-			//- 		.comment
-			//- 			span.name Vestibulum 
-			//- 			a id ligula porta felis euismod semper.
-			//- 		.comment
-			//- 			span.name Vestibulum 
-			//- 			a id ligula porta felis euismod semper.
+			.row#comments
+			 	.icon
+			 	.text 
+			 		.commentstop view all #{ img.comments.length } comments
+			 		.comment
+			 			span.name Vestibulum 
+			 			a id ligula porta felis euismod semper.
+			 		.comment
+			 			span.name Vestibulum 
+			 			a id ligula porta felis euismod semper.
+			 		.comment
+			 			span.name Vestibulum 
+			 			a id ligula porta felis euismod semper.
+			 		.comment
+			 			span.name Vestibulum 
+		 			a id ligula porta felis euismod semper.
+			 		.comment
+			 			span.name Vestibulum 
+			 			a id ligula porta felis euismod semper.
 
 		#buttons
 			if user == "guest"
@@ -63,7 +63,7 @@ block main
 				else
 					.button#like like
 
-				//- .button#comment
+				.button#comment
 				.button#share share
 
 				if owner

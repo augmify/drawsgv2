@@ -117,6 +117,7 @@ $(function(){
 		$("#home").tap(app);
 		$("#like").tap(like);
 		$("#delete").tap(del);
+		$("#comment").tap(postcomment);
 		$("#share").tap(share);
 
 	} else {
@@ -124,6 +125,7 @@ $(function(){
 		$("#home").on('click', app);
 		$("#like").on('click', like);
 		$("#share").on('click', share);
+		$("#comment").tap(postcomment);
 		$("#delete").on('click',del);
 	}
 });
