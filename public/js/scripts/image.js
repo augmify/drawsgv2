@@ -103,8 +103,7 @@ $(function(){
 
 	var comment = function(){
 		var caption = _.template("<div id='caption'><div id='close'></div><a id='title'>Add a Comment!</a><textarea id='captiontext' autofocus name='caption'></textarea><a id='submit'>Submit</a></div>");
-		$("#overlay").html(caption()).show();
-
+		$("#overlay").html(caption()).animate({opacity: 1}, 100, "ease").show();
 		$("#captiontext").focus();
 			
 		$("#submit").on('click', function(){
