@@ -140,7 +140,7 @@ $(function(){
 		$("#home").on('click', app);
 		$("#like").on('click', like);
 		$("#share").on('click', share);
-		$("#comment").on(comment);
+		$("#comment").on('click',comment);
 		$("#delete").on('click',del);
 	}
 });
