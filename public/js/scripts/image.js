@@ -125,7 +125,7 @@ $(function(){
 		$("#home").on('click', app);
 		$("#like").on('click', like);
 		$("#share").on('click', share);
-		$("#comment").tap(postcomment);
+		$("#comment").on(postcomment);
 		$("#delete").on('click',del);
 	}
 });
