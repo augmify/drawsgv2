@@ -68,43 +68,28 @@ exports.browse = function(req, res){
 
 
 exports.profile = function(req,res){
-	
+  if (!req.loggedIn) return res.redirect('/');
+  var userid = req.params.userid;
+  mongo.findUserById(userid, function(err,users){
+    if (err || !users){
+      //smth went wrong handle error
+      res.send("error");
+      return;
+    }
     var variables = utils.bootstrap(req);
-	
-	variables.user = { "accessToken" : "AAAGnOWkDXPUBAMh1IubTUsywlftOLS3Ve1uoaSv0XVLSW9In2641sKSFk1hipE9vFSdaV53rX6xF4dZBWLXCCbpYW1QzHeQNMdDPPQQZDZD", "email" : "linmxy@gmail.com", "first_name" : "Mike", "gender" : "male", "id" : "1727973296", "imagesliked" : [ ], "last_name" : "Lin", "link" : "http://www.facebook.com/mxy.lin.5", "locale" : "zh_CN", "location" : { "id" : "101883206519751", "name" : "Singapore, Singapore" }, "name" : "Mike Lin", "timezone" : 8, "type" : "fb", "updated_time" : "2013-01-14T03:10:35+0000", "username" : "mxy.lin.5" };
-    variables.other = {name: 'Mike Lin'};
-	variables.images = [{  "age" : 1362891750284, "caption" : "cross", "comments" : [ ], "likecount" : 0, "likes" : [ ], "name" : "66fec7b0g3.png", "score" : 0, "status" : 1, "uid" : "1727973296", "uname" : "Mike Lin" }
-,{ "age" : 1362896832348, "caption" : "rec", "comments" : [ ], "likecount" : 0, "likes" : [ ], "name" : "66fec7b0g4.png", "score" : 0, "status" : 1, "uid" : "1727973296", "uname" : "Mike Lin" }
-,{"age" : 1362907855870, "caption" : "tt", "comments" : [ ], "likecount" : 0, "likes" : [ ], "name" : "66fec7b0g6.png", "score" : 0, "status" : 1, "uid" : "1727973296", "uname" : "Mike Lin" }
-,{ "age" : 1362896867434, "caption" : "circle", "comments" : [ ], "likecount" : 0, "likes" : [ ], "name" : "66fec7b0g5.png", "score" : 0, "status" : 1, "uid" : "1727973296", "uname" : "Mike Lin" }];
+    console.log(users);
+    variables.user = req.user;
+    variables.other = users;
     variables.imghost = utils.imagehost;
-
-
-
-	res.render('profile',variables);
-
-  // if (!req.loggedIn) return res.redirect('/');
-  // var userid = req.params.userid;
-  // mongo.findUserById(userid, function(err,users){
-  //   if (err || !users){
-  //     //smth went wrong handle error
-  //     res.send("error");
-  //     return;
-  //   }
-  //   var variables = utils.bootstrap(req);
-  //   console.log(users);
-  //   variables.user = req.user;
-  //   variables.other = users;
-  //   variables.imghost = utils.imagehost;
-  //   mongo.ImagesByUser(userid,function(err,images){
-  //       if(err){
-  //           res.send("error");
-  //           return;
-  //       }
-  //       variables.images = images;
-  //       res.render('profile',variables);
-  //   });
-  // });
+    mongo.ImagesByUser(userid,function(err,images){
+        if(err){
+            res.send("error");
+            return;
+        }
+        variables.images = images;
+        res.render('profile',variables);
+    });
+  });
 };
 
 
