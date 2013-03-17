@@ -68,7 +68,7 @@ exports.browse = function(req, res){
 
 
 exports.profile = function(req,res){
-  if (!req.loggedIn) return res.redirect('/');
+if (!req.loggedIn) return res.redirect('/');
   var userid = req.params.userid;
   mongo.findUserById(userid, function(err,users){
     if (err || !users){
