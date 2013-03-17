@@ -39,23 +39,30 @@ block main
 						.profile-type following
 				.edit-btn.phone-style-btn
 					|Edit Your Profile
-					img.phone-style-btn-arrow(src="/img/right-grey-arrow.png")
 			.namecontainner
 				a#pname= other.name
 		#action-bar
-			.action-item.action-item-small.actived-action
+			#show-grid-action.action-item.action-item-small.actived-action
 				img(src="/img/music.png")
-			.action-item.action-item-small
+			#show-list-action.action-item.action-item-small
 				img(src="/img/pan.png")
-			.action-item.action-item-lastone
+			.action-item.action-item-lastone.phone-style-btn
 				img(src="/img/map-marker.png")
 				|&nbsp;Photo map&nbsp
-				img.phone-style-btn-arrow(src="/img/right-grey-arrow.png")
 		#image-grid
 			#images
 				if images.length > 0
 					each image in images
 						div.img-item
+							a.img-link(href='/image/#{ image._id }')
+								img(src="#{ imghost }#{ image.name }")
+				else
+					#{other.name} has no drawings now!
+		#image-list
+			#images
+				if images.length > 0
+					each image in images
+						div.img-list-item
 							a.img-link(href='/image/#{ image._id }')
 								img(src="#{ imghost }#{ image.name }")
 				else

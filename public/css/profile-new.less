@@ -30,7 +30,6 @@
             .statistic {
                 position: relative;
                 width: 33%;
-                min-width: 60px;
                 display: inline-block;
                 text-align: center;
                 .profile-number {
@@ -53,20 +52,12 @@
             }
         } 
         @edit-btn-height: 45px;
-        .phone-style-btn {
-            position: relative;
-            line-height: @edit-btn-height;
-            padding-left: 15px;
-            cursor: pointer;
-        }
-        .phone-style-btn-arrow {
-            position: absolute;
-            display: block;
-            height: 18px;
-            width: 18px;
-            right: 25px;
-            top: (@edit-btn-height - 18)/2;
-        }
+		.phone-style-btn{
+			line-height: @edit-btn-height;
+		}
+		.phone-style-btn:after {
+			top: @edit-btn-height/2 - 10px;
+		}
     }
     .namecontainner {
         border-top: 2px solid @common-blk-border;
@@ -78,6 +69,24 @@
     }
 }
 
+.phone-style-btn {
+	position: relative;
+	padding-left: 15px;
+	cursor: pointer;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.phone-style-btn:after {
+	content: '';
+	position: absolute;
+	display: block;
+	height: 21px;
+	width: 8px;
+	right: 25px;
+	background: url(/img/right-grey-arrow.png) no-repeat center center; 
+	background-size: cover;
+}
 @action-bar-height: 50px;
 #action-bar{
     border: 2px solid @common-blk-border;
@@ -113,8 +122,13 @@
         right: 0px;
         left: 150px;
     }
-    .actived-action img {
-        filter: grayscale(100%);
+	.phone-style-btn{
+	}
+	.phone-style-btn:after {
+		top: 5px;
+	}
+    .action-item-lastone img {
+		margin-right: 10px;
     }
     .actived-action:before {
         content: '';
@@ -145,12 +159,33 @@
     over-flow: auto;
     .img-item {
         display: inline-block;
-        padding: 5px;
-        border: 1px solid @common-blk-border;
+		width: 33%;
         .img-link{
             img {
-                width: 112px;
-                height: 112px;
+				border: 1px solid @common-blk-border;
+                width: 90%;
+				max-width: 200px;
+				max-height: 200px;
+				min-width: 50px;
+				min-height: 50px;
+            }
+        }
+    }
+}
+#image-list {
+	display: none;
+    margin: 10px;
+    over-flow: auto;
+	.img-list-item {
+        display: block;
+		background-color: @common-bg-color;
+		border: 2px solid @common-blk-border;
+		border-radius: @common-blk-border-radius;
+        .img-link{
+            img {
+                width: 80px;
+				height:80px;
+				margin: 5px auto 5px 5px;
             }
         }
     }

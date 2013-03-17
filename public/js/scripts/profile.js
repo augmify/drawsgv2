@@ -6,4 +6,22 @@ $(function(){
 	$(".realimg").width(size);
 	$(".realimg").height(size);
 
+	$('.action-item').click(function(){
+		if(!$(this).hasClass('phone-style-btn')){
+			$('.action-item').each(function(){
+				$(this).removeClass('actived-action');
+			});
+
+			$(this).addClass('actived-action');
+		}
+	});
+	$('#show-grid-action').click(function() {
+		$('#image-grid').show();	
+		$('#image-list').hide();	
+	});
+
+	$('#show-list-action').click(function(){
+		$('#image-grid').hide();
+		$('#image-list').show();
+	});
 });
