@@ -15,6 +15,9 @@ $(function(){
 			$(this).addClass('actived-action');
 		}
 	});
+	$('#follow').click(function(){
+		alert("wanna to follow...");
+	});
 	$('#show-grid-action').click(function() {
 		$('#image-grid').show();	
 		$('#image-list').hide();	
