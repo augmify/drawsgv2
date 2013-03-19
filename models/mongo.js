@@ -110,7 +110,7 @@ db.open(function(err, db) {
             images.update({
                 _id : ObjectID(imgid)
             }, {
-                $addToSet :{comments: {uid:comment}}
+                $addToSet :{comments: {uid:uid,comment:comment}}
             }, {safe: true}, function(err, result){
                 callback(err, result);
             });
