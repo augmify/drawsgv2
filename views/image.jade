@@ -38,22 +38,10 @@ block main
 				.icon
 				.text 
 					.commentstop view all #{ img.comments.length } comments
-					.comment
-						span.name Vestibulum 
-						a id ligula porta felis euismod semper.
-					.comment
-						span.name Vestibulum 
-						a id ligula porta felis euismod semper.
-					.comment
-						span.name Vestibulum 
-						a id ligula porta felis euismod semper.
-					.comment
-						span.name Vestibulum 
-						a id ligula porta felis euismod semper.
-					.comment
-						span.name Vestibulum 
-						a id ligula porta felis euismod semper.
-
+					each comment in img.comments
+                        .comment
+						    span.name comment.uid
+						    a comment.comment
 		#buttons
 			if user == "guest"
 				.button#share share	
