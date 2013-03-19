@@ -81,14 +81,6 @@ if (!req.loggedIn) return res.redirect('/');
     variables.user = req.user;
     variables.other = users;
     variables.imghost = utils.imagehost;
-    mongo.ImagesByUser(userid,function(err,images){
-        if(err){
-            res.send("error");
-            return;
-        }
-        variables.images = images;
-        res.render('profile',variables);
-    });
   });
 };
 
@@ -123,6 +115,16 @@ exports.image = function(req,res){
     }
     
     variables.imghost = utils.imagehost;
+    for(index = 0; index < img.length; index++){
+      cuid = img[index]['uid'];
+    mongo.findUserById(cuid, function(err,users){
+    if (err || !users){
+      //smth went wrong handle error
+      return;
+    }
+    
+     });
+    }
     variables.img = img;
 		variables.shared = shared;
     res.render('image', variables);
