@@ -97,7 +97,7 @@ $(function(){
 			type: "comment",
 			comment: msg
 		}, function(response){
-
+			location.reload();
 		});
 	};
 
