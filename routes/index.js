@@ -66,6 +66,18 @@ exports.browse = function(req, res){
   });
 };
 
+exports.follow = function(req,res){
+  if (!req.loggedIn) return res.redirect('/');
+  var fuid = req.params.followId;  
+  var cid = req.user.id;
+  mongo.follow(cid,fuid,function(err, status){
+      if (err){
+          console.log(err);
+          return res.send('error');
+      }
+      res.send('success');
+   });
+}
 
 exports.profile = function(req,res){
 if (!req.loggedIn) return res.redirect('/');

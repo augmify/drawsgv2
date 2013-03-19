@@ -62,6 +62,7 @@ app.post('/image', routes.imageupload);
 app.post('/browse', routes.browseimages);
 app.post('/draw', routes.updatecaption);
 app.post('/image/:imgid', routes.updateimage);
+app.post('/follow',routes.follow);
 app.post('/doLogin',routes.doLogin);
 app.post('/doRegister',routes.doRegister);
 

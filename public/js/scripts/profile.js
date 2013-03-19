@@ -16,7 +16,12 @@ $(function(){
 		}
 	});
 	$('#follow').click(function(){
-		alert($('#follower_id').val());
+        var followId =  $('#follower_id').val();
+        $.post('/follow', {
+            followId: followId
+        }, function(response){
+            Location.reload();
+        }, "json");
 	});
 	$('#show-grid-action').click(function() {
 		$('#image-grid').show();	
