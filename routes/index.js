@@ -382,7 +382,8 @@ exports.updateimage = function(req, res){
       res.redirect('/browse');
     });
   }else if(type === 'comment'){
-    mongo.commentImage(imgid, req.user.id, val, function(err, status){
+      var comm = req.body.comment;
+    mongo.commentImage(imgid, req.user.id, comm, function(err, status){
       if (err){
         console.log(err);
         return res.send('error');
