@@ -100,6 +100,23 @@ db.open(function(err, db) {
             });
         });
     };
+    
+    exports.commentImage = function(imgid, uid, comment,callback){
+        db.collection('images', function(err, images){
+            if (err) {
+                console.log(err);
+                return callback(err, {});
+            }
+            images.update({
+                _id : ObjectID(imgid)
+            }, {
+                $addToSet :{comments: {uid:comment}}
+            }, {safe: true}, function(err, result){
+                callback(err, result);
+            });
+        });
+    }
+
     exports.updateImage = function(imgid, caption, callback){
         db.collection('images', function(err, images){
             if (err) {

@@ -381,6 +381,14 @@ exports.updateimage = function(req, res){
       }
       res.redirect('/browse');
     });
+  }else if(type === 'comment'){
+    mongo.commentImage(imgid, req.user.id, val, function(err, status){
+      if (err){
+        console.log(err);
+        return res.send('error');
+      }
+      res.send('success');
+    });
   }
 };
 

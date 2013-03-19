@@ -93,7 +93,7 @@ $(function(){
 		}
 	};
 	var postcomment = function(msg){
-		$.post('/image', {
+		$.post(window.location.pathname, {
 			type: "comment",
 			comment: msg
 		}, function(response){
@@ -107,7 +107,6 @@ $(function(){
 		$("#captiontext").focus();
 			
 		$("#submit").on('click', function(){
-				alert($("#captiontext").val());
 				postcomment($("#captiontext").val());
 				setTimeout(function(){
 					$("#overlay").hide();
