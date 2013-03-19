@@ -16,7 +16,7 @@ $(function(){
 		}
 	});
 	$('#follow').click(function(){
-		alert("wanna to follow...");
+		alert($('#follower_id'));
 	});
 	$('#show-grid-action').click(function() {
 		$('#image-grid').show();	
