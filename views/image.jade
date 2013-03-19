@@ -40,8 +40,8 @@ block main
 					.commentstop view all #{ img.comments.length } comments
 					each comment in img.comments
 						.comment
-							span.name comment.uid
-							a comment.comment
+							span.name #{comment.uid}
+							a #{comment.comment}
 		#buttons
 			if user == "guest"
 				.button#share share	
