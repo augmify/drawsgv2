@@ -7242,7 +7242,7 @@
             imageURLPrefix: "lib/img",
             keyboardShortcuts: true,
             sizeToContainer: true,
-            toolClasses: [ LC.Pencil, LC.Eraser, LC.LineTool, LC.RectangleTool, LC.EllipseTool,LC.Pan, LC.EyeDropper ]
+            toolClasses: [ LC.Pencil, LC.Eraser, LC.LineTool, LC.RectangleTool, LC.EllipseTool,LC.FillEllipseTool,LC.Pan, LC.EyeDropper ]
         }, opts);
         $el = $(el);
         $el.addClass("literally");
@@ -7529,6 +7529,35 @@
         };
         return Ellipse;
     }(LC.Shape);
+    LC.FillEllipse = function(_super) {
+        __extends(FillEllipse, _super);
+        function FillEllipse(x, y, strokeWidth, color) {
+            this.x = x;
+            this.y = y;
+            this.strokeWidth = strokeWidth;
+            this.color = color;
+            this.width = 0;
+            this.height = 0;
+        }
+        FillEllipse.prototype.draw = function(ctx) {
+            var k = (this.width/0.75)/2;
+            var w = this.width / 2;
+            var h = this.height / 2;
+            var x = this.x + k;
+            var y = this.y + h;
+            ctx.lineWidth = this.strokeWidth;
+            ctx.strokeStyle = this.color;
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.moveTo(x,y - h);
+            ctx.bezierCurveTo(x+k, y-h, x+k, y+h, x, y+h);
+            ctx.bezierCurveTo(x-k, y+h, x-k, y-h, x, y-h);
+            ctx.closePath();
+            return ctx.fill();
+        };
+        return FillEllipse;
+    }(LC.Shape);
+
 
     LC.Line = function(_super) {
         __extends(Line, _super);
@@ -7852,7 +7881,31 @@
         };
         return EllipseTool;
     }(LC.Tool)//(LC.BrushWidthOptionTool);
-
+    LC.FillEllipseTool = function(_super) {
+        __extends(FillEllipseTool, _super);
+        function FillEllipseTool(opts) {
+            this.opts = opts;
+            //this.strokeWidth = 5;
+            FillEllipseTool.__super__.constructor.apply(this, arguments);
+        }
+        FillEllipseTool.prototype.title = "FillEllipse";
+        FillEllipseTool.prototype.cssSuffix = "fillellipse";
+        FillEllipseTool.prototype.buttonContents = function() {
+            return "<img src='" + this.opts.imageURLPrefix + "/fillellipse.png'>";
+        };
+        FillEllipseTool.prototype.begin = function(x, y, lc) {
+            return this.currentShape = new LC.FillEllipse(x, y, LC.penStrokeWidth/*this.strokeWidth*/, lc.primaryColor);
+        };
+        FillEllipseTool.prototype["continue"] = function(x, y, lc) {
+            this.currentShape.width = x - this.currentShape.x;
+            this.currentShape.height = y - this.currentShape.y;
+            return lc.update(this.currentShape);
+        };
+        FillEllipseTool.prototype.end = function(x, y, lc) {
+            return lc.saveShape(this.currentShape);
+        };
+        return FillEllipseTool;
+    }(LC.Tool)//(LC.BrushWidthOptionTool);
     LC.LineTool = function(_super) {
         __extends(LineTool, _super);
         function LineTool(opts) {
