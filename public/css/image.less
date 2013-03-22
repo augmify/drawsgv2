@@ -267,30 +267,27 @@ footer {
 	height: 40px;
 	position: relative;
 	.button {
-        display:inline-block;
 		padding: 10px 0px;
 		border-radius: 3px;
 		height: 20px;
 		border: solid 1px darken(#e5e5e5, 10);
 		background-color: #e5e5e5;
+		width: 31%;
 		font-size: 17px;
 		text-align: center;
 		&:nth-child(1){
+			position: absolute;
 			top: 0;
 			left: 0;
 		}
 		&:nth-child(2){
-            top: 0;
-            right: 0;
+			margin: auto;
 		}
 		&:nth-child(3){
+			position: absolute;
 			top: 0;
 			right: 0;
 		}
-        &:nth-child(4){
-          top: 0;
-          right: 0;
-        }
 		&#like {
 			color: white;
 			.vertical(@headercolor,darken(saturate(@headercolor,10),10));
