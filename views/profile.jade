@@ -32,10 +32,16 @@ block main
 						.profile-number #{images.length}
 						.profile-type doodles
 					.statistic
-						.profile-number #{other.followers.length} 
+						if other.followers
+							.profile-number #{other.followers.length} 
+						else
+							.profile-number 0
 						.profile-type followers
 					.statistic
-						.profile-number 0
+						if other.following
+							.profile-number #{other.followings.length}
+						else
+							.profile-number 0
 						.profile-type following
 				.edit-btn.phone-style-btn
 					|Edit Your Profile
