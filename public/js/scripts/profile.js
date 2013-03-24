@@ -1,10 +1,14 @@
+function imgClick(url){
+    window.location = url;
+}
+
 $(function(){
-	var width = window.innerWidth - 3;
-	var size = width/4 - 2 - 3;
-	$(".image").width(size);
-	$(".image").height(size);
-	$(".realimg").width(size);
-	$(".realimg").height(size);
+    //var width = window.innerWidth - 3;
+	//var size = width/3 - 2 - 3;
+	//$(".image").width(size);
+	//$(".image").height(size);
+	//$(".realimg").width(size);
+	//$(".realimg").height(size);
 
 	$('.action-item').click(function(){
 		if(!$(this).hasClass('phone-style-btn')){
@@ -17,11 +21,14 @@ $(function(){
 	});
 	$('#follow').click(function(){
         var followId =  $('#follower_id').val();
+        alert(followId);
+        /*
         $.post('/follow', {
             followId: followId
         }, function(response){
-            Location.reload();
+            //Location.reload();
         }, "json");
+        */
 	});
 	$('#show-grid-action').click(function() {
 		$('#image-grid').show();	

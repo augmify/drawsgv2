@@ -53,9 +53,8 @@ block main
 			#images
 				if images.length > 0
 					each image in images
-						div.img-item
-							a.img-link(href='/image/#{ image._id }')
-								img(src="#{ imghost }#{ image.name }")
+						div.img-item 
+							img.gridimage(src="#{ imghost }#{ image.name }",onClick="imgClick('/image/#{image._id}')")
 				else
 					#{other.name} has no drawings now!
 		#image-list
