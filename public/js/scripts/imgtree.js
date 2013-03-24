@@ -117,7 +117,11 @@ $(document).ready(function(){
 	}).click(function(){
 	    var url = $(this).data('url');	
 		var imgnode = $('#imgtree').empty();
-		var closefunc = "$('.img-preview').hide(200);";
+		var mask = $('#img-preview-mask');
+		if(mask.length==0){
+			mask = $('<div id="img-preview-mask"></div>').appendTo($('body'));
+		}
+		var closefunc = "$('.img-preview').hide(200); $('#img-preview-mask').hide();";
 		var preview = '<div class="img-preview">'+
 							'<img class="img-preview-close" src="/img/close.png" onclick="'+ closefunc +'"/>'+
 							'<img class="img-preview-pic" src="'+url+'"  style="max-width: 600px; max-height: 600px;"/>'+
@@ -125,6 +129,7 @@ $(document).ready(function(){
 		var pnode = $(preview);
 		var img = pnode.find('.img-preview-pic').load(function(){
 			pnode.show(500);
+			mask.show();
 		});
 		pnode.appendTo(imgnode);
 	});
