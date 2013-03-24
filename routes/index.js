@@ -68,8 +68,9 @@ exports.browse = function(req, res){
 
 exports.follow = function(req,res){
   if (!req.loggedIn) return res.redirect('/');
-  var fuid = req.params.followId;  
+  var fuid = req.body.followId;  
   var cid = req.user.id;
+  console.log(cid,fuid);
   mongo.follow(cid,fuid,function(err, status){
       if (err){
           console.log(err);

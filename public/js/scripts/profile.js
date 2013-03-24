@@ -20,15 +20,11 @@ $(function(){
 		}
 	});
 	$('#follow').click(function(){
-        var followId =  $('#follower_id').val();
-        alert(followId);
-        /*
-        $.post('/follow', {
-            followId: followId
-        }, function(response){
-            //Location.reload();
-        }, "json");
-        */
+        var _followId =  $('#follower_id').val();
+        $.post('/follow', {followId:_followId},function(response){
+	        alert(reponse);
+            Location.reload();
+        });
 	});
 	$('#show-grid-action').click(function() {
 		$('#image-grid').show();	
