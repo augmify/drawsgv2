@@ -94,18 +94,7 @@ if (!req.loggedIn) return res.redirect('/');
     variables.user = req.user;
     variables.other = users;
     variables.imghost = utils.imagehost;
-<<<<<<< HEAD
 	res.render('profile',variables);
-=======
-    mongo.ImagesByUser(userid,function(err,images){
-        if(err){
-            res.send("error");
-            return;
-        }
-        variables.images = images;
-        res.render('profile',variables);
-    });
->>>>>>> 3fd3c351e7bba7e7d271cc1682956d7a92d61456
   });
 };
 
