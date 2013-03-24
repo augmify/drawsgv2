@@ -85,7 +85,7 @@ $(document).ready(function(){
 		var closefunc = "$('.img-preview').hide(200);";
 		var preview = '<div class="img-preview">'+
 							'<img class="img-preview-close" src="/img/close.png" onclick="'+ closefunc +'"/>'+
-							'<img src="'+url+'"  style="width: 500px; height: 300px;max-width: 600px; max-height: 600px;"/>'+
+							'<img src="'+url+'"  style="max-width: 600px; max-height: 600px;"/>'+
 						'</div>'
 		var pnode = $(preview).appendTo(imgnode);
 		pnode.show(500);
