@@ -94,6 +94,9 @@ if (!req.loggedIn) return res.redirect('/');
     variables.user = req.user;
     variables.other = users;
     variables.imghost = utils.imagehost;
+<<<<<<< HEAD
+	res.render('profile',variables);
+=======
     mongo.ImagesByUser(userid,function(err,images){
         if(err){
             res.send("error");
@@ -102,6 +105,7 @@ if (!req.loggedIn) return res.redirect('/');
         variables.images = images;
         res.render('profile',variables);
     });
+>>>>>>> 3fd3c351e7bba7e7d271cc1682956d7a92d61456
   });
 };
 
@@ -420,7 +424,7 @@ exports.updateimage = function(req, res){
 * DESKTOP ROUTES
 */
 exports.welcome = function(req, res){
-    mongo.popularImages(8, function(err, images){
+    mongo.popularImages(100, function(err, images){
     var variables = utils.bootstrap(req);
     variables.user = req.user;
     variables.imghost = utils.imagehost;

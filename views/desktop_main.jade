@@ -13,16 +13,14 @@ block main
 	header
 		#header_container
 			img#logo(src='/img/logoblack.png')
-			p.title A Collection of doodles about Singapore
 			img#screenshot(src='/img/ss1.png')
 	#main
-		#action 
-			.text Go to <b>drawsg.sg</b> on your phone
-
-		#images
+		#tree
+			img#treetop(src='/img/treetop.png')
+			img#treetruck(src='/img/treetrunk.png')
+		#imgtree
 			each image in images
-				a.image(href='/image/#{ image._id }')
-					img(src="#{ imghost }#{ image.name }")
+				img(data-type="img-circle", src="#{imghost}#{image.name}", data-id="#{ image._id}" )
 
 	#about
 		a About
@@ -68,3 +66,6 @@ block main
 		a#contactus(href='mailto:social@augmify.com') contact us
 	
 block scripts
+	script(type='text/javascript', src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js")
+	script(type='text/javascript', src="/js/libs/mustache.js")
+	script(type='text/javascript', src="/js/scripts/imgtree.js")
