@@ -121,6 +121,7 @@ $(document).ready(function(){
 		if(mask.length==0){
 			mask = $('<div id="img-preview-mask"></div>').appendTo($('body'));
 		}
+		mask.show();
 		var closefunc = "$('.img-preview').hide(200); $('#img-preview-mask').hide();";
 		var preview = '<div class="img-preview">'+
 							'<img class="img-preview-close" src="/img/close.png" onclick="'+ closefunc +'"/>'+
@@ -129,7 +130,6 @@ $(document).ready(function(){
 		var pnode = $(preview);
 		var img = pnode.find('.img-preview-pic').load(function(){
 			pnode.show(500);
-			mask.show();
 		});
 		pnode.appendTo(imgnode);
 	});
