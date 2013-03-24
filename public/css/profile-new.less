@@ -171,20 +171,34 @@
     }
 }
 #image-list {
-	display: none;
+    display: none;
     margin: 10px;
     over-flow: auto;
 	.img-list-item {
-        display: block;
+		display: block;
 		background-color: @common-bg-color;
 		border: 2px solid @common-blk-border;
 		border-radius: @common-blk-border-radius;
-        .img-link{
-            img {
-                width: 80px;
-				height:80px;
-				margin: 5px auto 5px 5px;
-            }
-        }
+		position:relative;
+		.draw_icon{
+			position: absolute;
+			border-right: 2px solid #EFEFEF;
+			height: 80px;
+			width: 80px;
+			left: 0;
+			top: 50px;
+			padding: 8px;
+		}
+		#drawing{
+			position: relative;
+			padding-left: 96px;
+			.time{
+				.timespan{
+
+				}
+			}
+		}
+		
+		
     }
 }

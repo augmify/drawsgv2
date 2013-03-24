@@ -3,10 +3,13 @@ function imgClick(url){
 }
 
 $(function(){
-    //var width = window.innerWidth - 3;
-	//var size = width/3 - 2 - 3;
-	//$(".image").width(size);
-	//$(".image").height(size);
+	var width = window.innerWidth - 3;
+	var drawing_pic_size = (width - 100) * 0.8;
+	$(".gridimage").width(width/3.3);
+	$(".gridimage").height(width / 3.3);
+	$(".drawing_pic").width(drawing_pic_size);
+	$(".drawing_pic").height(drawing_pic_size);
+	$(".draw_icon").css("top",drawing_pic_size / 2);
 	//$(".realimg").width(size);
 	//$(".realimg").height(size);
 
