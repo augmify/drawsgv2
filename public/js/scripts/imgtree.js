@@ -85,9 +85,12 @@ $(document).ready(function(){
 		var closefunc = "$('.img-preview').hide(200);";
 		var preview = '<div class="img-preview">'+
 							'<img class="img-preview-close" src="/img/close.png" onclick="'+ closefunc +'"/>'+
-							'<img src="'+url+'"  style="max-width: 600px; max-height: 600px;"/>'+
+							'<img class="img-preview-pic" src="'+url+'"  style="max-width: 600px; max-height: 600px;"/>'+
 						'</div>'
-		var pnode = $(preview).appendTo(imgnode);
-		pnode.show(500);
+		var pnode = $(preview);
+		var img = pnode.find('.img-preview-pic').load(function(){
+			pnode.show(500);
+		});
+		pnode.appendTo(imgnode);
 	});
 });
