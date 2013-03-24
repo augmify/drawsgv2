@@ -20,7 +20,7 @@ block main
 			img#treetruck(src='/img/treetrunk.png')
 		#imgtree
 			each image in images
-				img.img-data(data-type="img-circle", src="#{imghost}#{image.name}", data-id="#{ image._id}" )
+				div.img-data(data-type="img-circle", data-src="#{imghost}#{image.name}", data-id="#{ image._id}" )
 
 	#about
 		a About

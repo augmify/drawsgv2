@@ -12,11 +12,11 @@ $(document).ready(function(){
 									data-id="{{id}}" data-url="{{url}}"/>\
 								{{/image}}\
 						</svg>';
-	var images =$('#imgtree img[data-type=img-circle]');
+	var images =$('#imgtree div[data-type=img-circle]');
 	var tree = $('#tree');
 	var treetop = $('#treetop');
 	var data = {image: []};
-	var scale = 4961/600;
+	var scale = 4961/tree.width();
 	var deviation_y = 200;
 	var posis = [
 		{r:100, x: 1500, y: 653},
@@ -35,9 +35,7 @@ $(document).ready(function(){
 		if(index >= posis.length){
 		return;
 		}
-		$("<img/>") .attr("src", $(item).attr("src")) .load(function() {
-			// pic_real_width = this.width; 
-			// pic_real_height = this.height;
+		$("<img/>") .attr("src", $(item).data("src")) .load(function() {
 			var image = $('#img'+$(item).data('id')+' image');
 			var width = Number(image.attr('width'));
 			var height = Number(image.attr('height'));
@@ -53,14 +51,12 @@ $(document).ready(function(){
 				image.attr('y', py - (nh - height)/2);
 			}
 		});
-		$(item).removeAttr("width"); 
-		$(item).removeAttr("height");
 		var w = $(item).width(), h = $(item).height();
 		var cr =  posis[index].r/ scale;
 		var cx = posis[index].x / scale, cy = (posis[index].y+deviation_y) / scale; 
 		var svgdata = {
 			id: $(item).data('id'),
-			url : $(item).attr('src'),
+			url : $(item).data('src'),
 			// url : "http://images.google.com/intl/en_ALL/images/logos/images_logo_lg.gif",
 			pw : cx + cr,
 			ph : cy + cr,
@@ -80,18 +76,18 @@ $(document).ready(function(){
 
 	tree.append(cs);
 	cs.find('circle').hover(function(){
-		$(this).attr('stroke', "green");
+		$(this).attr('stroke', "#eee");
 	}, function(){
 		$(this).attr('stroke', "#efefef");
 	}).click(function(){
 	    var url = $(this).data('url');	
 		var imgnode = $('#imgtree').empty();
-		var closefunc = "$('.img-preview').hide();";
+		var closefunc = "$('.img-preview').hide(200);";
 		var preview = '<div class="img-preview">'+
 							'<img class="img-preview-close" src="/img/close.png" onclick="'+ closefunc +'"/>'+
-							'<img src="'+url+'"  style="max-width: 600px; max-height: 600px;"/>'+
+							'<img src="'+url+'"  style="width: 500px; height: 300px;max-width: 600px; max-height: 600px;"/>'+
 						'</div>'
 		var pnode = $(preview).appendTo(imgnode);
-		pnode.show();
+		pnode.show(500);
 	});
 });
