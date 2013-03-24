@@ -20,7 +20,7 @@ block main
 			img#treetruck(src='/img/treetrunk.png')
 		#imgtree
 			each image in images
-				img(data-type="img-circle", src="#{imghost}#{image.name}", data-id="#{ image._id}" )
+				img.img-data(data-type="img-circle", src="#{imghost}#{image.name}", data-id="#{ image._id}" )
 
 	#about
 		a About
@@ -66,6 +66,6 @@ block main
 		a#contactus(href='mailto:social@augmify.com') contact us
 	
 block scripts
-	script(type='text/javascript', src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js")
+	script(type='text/javascript', src="/js/libs/jquery-1.7.2.js")
 	script(type='text/javascript', src="/js/libs/mustache.js")
 	script(type='text/javascript', src="/js/scripts/imgtree.js")

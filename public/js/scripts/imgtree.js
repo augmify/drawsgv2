@@ -8,7 +8,8 @@ $(document).ready(function(){
 								{{/image}}\
 							</defs>\
 								{{#image}}\
-									<circle cx="{{cx}}" cy="{{cy}}" r="{{cr}}" fill="url(#img{{id}})" stroke="white" stroke-width="1" onclick="alert();"/>\
+									<circle cx="{{cx}}" cy="{{cy}}" r="{{cr}}" fill="url(#img{{id}})" stroke="white" stroke-width="1" \
+									data-id="{{id}}" data-url="{{url}}"/>\
 								{{/image}}\
 						</svg>';
 	var images =$('#imgtree img[data-type=img-circle]');
@@ -25,6 +26,9 @@ $(document).ready(function(){
 		{r:180, x: 1554, y: 1549},
 		{r:100, x: 2943, y: 1616},
 		{r:120, x: 1063, y: 1263},
+		{r:80, x: 2622, y: 1009},
+		{r:120, x: 2622, y: 1009},
+		{r:120, x: 1882, y: 1376},
 
 	];
 	images.each(function(index, item){
@@ -79,5 +83,15 @@ $(document).ready(function(){
 		$(this).attr('stroke', "green");
 	}, function(){
 		$(this).attr('stroke', "#efefef");
+	}).click(function(){
+	    var url = $(this).data('url');	
+		var imgnode = $('#imgtree').empty();
+		var closefunc = "$('.img-preview').hide();";
+		var preview = '<div class="img-preview">'+
+							'<img class="img-preview-close" src="/img/close.png" onclick="'+ closefunc +'"/>'+
+							'<img src="'+url+'"  style="max-width: 600px; max-height: 600px;"/>'+
+						'</div>'
+		var pnode = $(preview).appendTo(imgnode);
+		pnode.show();
 	});
 });

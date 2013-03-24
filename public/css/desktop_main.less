@@ -79,8 +79,31 @@ header {
 		}
 	}
 	#imgtree{
-		img{
+		position: absolute;
+		z-index: 20;
+		.img-data{
 			display: none;
+		}
+		.img-preview{
+			border: 1px solid #ddd;
+			background-color: #efefef;
+			border-raduis: 4px;
+			padding: 5px;
+			position: relative;	
+			display: none;
+		}
+		.img-preview-close{
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			right: -5px;
+			top: -5px;
+		}
+		.img-preview-close:hover{
+			width: 22px;
+			height: 22px;
+			right: -6px;
+			top: -6px;
 		}
 	}
 }
