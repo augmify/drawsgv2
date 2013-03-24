@@ -43,10 +43,7 @@ block main
 						else
 							.profile-number 0
 						.profile-type following
-				.edit-btn.phone-style-btn
-					|Edit Your Profile
-			.namecontainner
-				a#pname= other.name
+				.edit-btn.phone-style-btn #{other.name}
 		#action-bar
 			#show-grid-action.action-item.action-item-small.actived-action
 				img(src="/img/music.png")
@@ -68,8 +65,11 @@ block main
 				if images.length > 0
 					each image in images
 						div.img-list-item
-							a.img-link(href='/image/#{ image._id }')
-								img(src="#{ imghost }#{ image.name }")
+							img.draw_icon(src="https://graph.facebook.com/#{ other.id }/picture?type=square")
+							#drawing
+								#time
+									span.timespan #{new Date(image.age).toDateString()}
+								img.drawing_pic(src="#{ imghost }#{ image.name }",,onClick="imgClick('/image/#{image._id}')")
 				else
 					#{other.name} has no drawings now!
 
