@@ -56,7 +56,7 @@ $(document).ready(function(){
 		var cx = posis[index].x / scale, cy = (posis[index].y+deviation_y) / scale; 
 		var svgdata = {
 			id: $(item).data('id'),
-			url : $(item).data('src'),
+			url : $(item).attr('src'),
 			// url : "http://images.google.com/intl/en_ALL/images/logos/images_logo_lg.gif",
 			pw : cx + cr,
 			ph : cy + cr,
