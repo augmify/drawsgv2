@@ -7718,7 +7718,9 @@
         Toolbar.prototype.initButtons = function() {
             var _this = this;
             this.$el.find(".clear-button").click(function(e) {
-                return _this.lc.clear();
+                if(confirm("Confirm to delete this drawing?")){
+                    return _this.lc.clear();
+                }
             });
             this.$el.find(".undo-button").click(function(e) {
                 return _this.lc.undo();
