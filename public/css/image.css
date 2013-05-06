@@ -450,7 +450,7 @@ header #follow {
 #main {
   background-color: #efefef;
   margin-top: 2px;
-  min-height: 70%;
+  min-height: 100%;
 }
 footer {
   border-top: dashed 1px #b52c38;
@@ -603,7 +603,8 @@ a {
 
 }
 #buttons .button#like .btimage {
-  background: url(/img/like.png) center no-repeat;
+  background: url(/img/senceui/profile/drawSG_ui-54.png) center no-repeat;
+  background-size: 60% auto;
 }
 #buttons .button#share .btimage {
   background: url(/img/share.png) center no-repeat;
@@ -613,6 +614,10 @@ a {
 }
 #buttons .button#delete .btimage {
   background: url(/img/delete.png) center no-repeat;
+}
+#buttons .button.liked .btimage {
+  background: url(/img/senceui/profile/drawSG_ui-55.png) center no-repeat !important;
+  background-size: 60% auto !important;
 }
 #buttons .button .btimage {
   height: 30px;
