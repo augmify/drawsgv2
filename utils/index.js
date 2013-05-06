@@ -1,4 +1,6 @@
-var _ = require("underscore");
+var _ = require("underscore"),
+    moment = require('moment');
+    moment().format();
 //auth variables
 var auth = function(){
 	if (process.env.NODE_ENV === "production") {
@@ -68,7 +70,10 @@ var postImage = function (accessToken, imagePath, caption, successCB) {
 			successCB();
 		}
 	});
-}
+};
+
+
+
 
 
 //exports
@@ -78,3 +83,25 @@ exports.auth = auth();
 exports.imagehost = imagehost();
 exports.host = host();
 exports.postImage = postImage;
+moment.lang('en', {
+    relativeTime : {
+        future: "in %s",
+        past:   "%s ago",
+        s:  "1 seccond",
+        ss: "%d seconds",
+        m:  "1 minute",
+        mm: "%d minutes",
+        h:  "1 hour",
+        hh: "%d hours",
+        d:  "1 day",
+        dd: "%d days",
+        M:  "1 month",
+        MM: "%d month",
+        y:  "1 year",
+        yy: "%d years"
+    }
+});
+exports.timespan = function(timestamp){
+//    return moment(timestamp).fromNow();
+    return moment.duration((Date.now()-timestamp)/1000, "seconds").humanize();
+}

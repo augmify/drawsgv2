@@ -1,0 +1,48 @@
+extends layout
+
+block styles
+	if env == "development"|| env == "production"
+		link(rel="stylesheet", href="/css/follow.css")
+	else if env == "local"
+		link(rel="stylesheet/less", href="/css/follow.less")
+		script(src="/js/libs/less-1.1.5.min.js")	
+
+block append header
+	#home home
+	//- #refresh
+
+block overlay
+	#info 
+		span loading
+		#loading
+
+block main
+	#main.clearfix
+		#nav
+			a#popular.active Popular
+			//- a#liked Liked
+			a#latest Latest
+			a#yours Yours
+		#images
+			if images.length > 0
+				each image in images
+					a.image(href='/image/#{ image._id }')
+						img(src="#{ imghost }#{ image.name }")
+			else
+				a no images :( draw one!
+
+
+	footer
+
+block scripts
+	script(type='text/javascript')
+		var imghost = '#{ imghost }';
+
+	if env == "development"|| env == "production"
+		script(type='text/javascript', src="/js/libs/zub.js")
+		script(type='text/javascript', src="/js/scripts/browse.js")
+	else if env == "local"
+		script(type='text/javascript', src="/js/libs/zepto.js")
+		script(type='text/javascript', src="/js/libs/underscore.js")
+		script(type='text/javascript', src="/js/libs/backbone.js")
+		script(type='text/javascript', src="/js/scripts/browse.js")

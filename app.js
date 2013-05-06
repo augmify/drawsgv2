@@ -5,8 +5,10 @@ var express = require('express'),
     utils = require('./utils'),
     everyauth = require('everyauth'),
     auth = require('./models/auth'),
-    sessionstore = new require('connect-redis')(express),
-    redisstore = new sessionstore();
+    MemStore = require('express/node_modules/connect/lib/middleware/session/memory'),
+    store = new MemStore({reapInterval: 50000});
+//    sessionstore = new require('connect-redis')(express),
+//    redisstore = new sessionstore();
 
 var app = express();
 app.configure(function(){
@@ -17,7 +19,8 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser("$%^&%^&*asdfasdf"));
-  app.use(express.session({store: redisstore,cookie: {maxAge: 1000*60*60*24*7}}));
+  app.use(express.session({secret: 'your secret here', store: store, cookie: {maxAge: 300000}}));
+//  app.use(express.session({store: redisstore,cookie: {maxAge: 1000*60*60*24*7}}));
   app.use(everyauth.middleware());
   app.use(app.router);
 });
@@ -47,15 +50,17 @@ var mfilter = [routes.mobilefilter];
 //GET
 app.get('/', dfilter, routes.landing);
 app.get('/app', dfilter, routes.app);
-app.get('/draw', dfilter, routes.draw);
+app.get('/draw', routes.draw);
 
 app.get('/browse', routes.browse);
 app.get('/likes', routes.likes);
 app.get('/image/:imgid/:shared?', routes.image);
+app.get('/comments/:imgid', routes.comment);
 app.get('/fb/image/:imgid', routes.fbimage);
 
 app.get('/profile/:userid',routes.profile);
-
+app.get('/followers/:userid', routes.followers);
+app.get('/following/:userid', routes.followings);
 app.get('/register',routes.register);
 //POST
 app.post('/image', routes.imageupload);

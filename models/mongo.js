@@ -1,7 +1,8 @@
 var mongo = require('mongodb'),
     Server = mongo.Server,
     Db = mongo.Db,
-    ObjectID = mongo.ObjectID;
+    ObjectID = mongo.ObjectID,
+    utils = require('../utils');
 
 //sets up a configuration for the connection & auto_reconnect tells the driver to retry sending a command to the server if there is a failure
 var server = new Server('localhost', 27017, {auto_reconnect: true});
@@ -122,7 +123,7 @@ db.open(function(err, db) {
         });
     };
     
-    exports.commentImage = function(imgid, uid, comment,callback){
+    exports.commentImage = function(imgid, uid, uname, comment,callback){
         db.collection('images', function(err, images){
             if (err) {
                 console.log(err);
@@ -131,7 +132,7 @@ db.open(function(err, db) {
             images.update({
                 _id : ObjectID(imgid)
             }, {
-                $addToSet :{comments: {uid:uid,comment:comment}}
+                $addToSet :{comments: {uid:uid,uname:uname, comment:comment, timestamp: Date.now()}}
             }, {safe: true}, function(err, result){
                 callback(err, result);
             });

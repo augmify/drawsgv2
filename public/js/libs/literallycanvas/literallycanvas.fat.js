@@ -7655,7 +7655,49 @@
     LC.defaultColors = [ "rgba(255, 0, 0, 0.9)", "rgba(255, 128, 0, 0.9)", "rgba(255, 255, 0, 0.9)", "rgba(128, 255, 0, 0.9)", "rgba(0, 255, 0, 0.9)", "rgba(0, 255, 128, 0.9)", "rgba(0, 128, 255, 0.9)", "rgba(0, 0, 255, 0.9)", "rgba(128, 0, 255, 0.9)", "rgba(255, 0, 128, 0.9)", "rgba(0, 0, 0, 0.9)", "rgba(255, 255, 255, 0.9)" ];
     LC.defaultStrokeColor = "rgba(0, 0, 0, 0.9)";
     LC.defaultFillColor = "rgba(255, 255, 255, 0.9)";
-    LC.toolbarHTML = '  <div class="toolbar-row">    <div class="toolbar-row-left">      <div class="button color-square stroke-picker">&nbsp;</div>      <div class="tools button-group"></div>      <div class="tool-options-container"></div>    </div>    <div class="toolbar-row-right">      <div class="action-buttons">        <div class="button clear-button danger">Clear</div>        <div class="button-group">          <div class="button btn-warning undo-button">&larr;</div><div class="button btn-warning redo-button">&rarr;</div>        </div>        <div class="button-group">          <div class="button btn-inverse zoom-out-button">&ndash;</div><div class="button btn-inverse zoom-in-button">+</div>        </div>        <div class="zoom-display">1</div>      </div>    </div>    <div class="clearfix"></div>  </div>';
+    LC.toolbarHTML = '<div class="toolbar-row">  \n\
+   <div class="toolbar-row-left">   \n\
+   <div class="button color-square stroke-picker">&nbsp;</div>  \n\
+    <div class="tools button-group"></div>    \n\
+  <div class="tool-options-container"></div>  \n\
+  </div>   \n\
+            <div class="toolbar-row-right">\
+                <div id="testfield" class="span16">\
+                <div class="flyout-wrap">\
+                  <a class="flyout-btn" href="#" title="Toggle"><span></span></a>\
+                  <ul class="flyout flyout-init">\
+                    <li><a><div class="zoom-display">1</div></a></li>\
+                    <li><a href="#" class="button clear-button danger"><span></span></a></li>\
+                    <li><a href="#" class="button btn-warning undo-button"><span></span></a></li>\
+                    <li><a href="#" class="button btn-warning redo-button"><span></span></a></li>\
+                    <li><a href="#" class="button btn-inverse zoom-out-button" style="background: url(/img/senceui/draw/button-04.png) no-repeat center center;background-size: 32px 32px;"><span></span></a></li>\
+                    <li><a href="#" class="button btn-inverse zoom-out-button"><span></span></a></li>\
+                  </ul>\
+                </div>\
+                </div>\
+            </div>\
+        </div>\
+    <div class="clearfix"></div>\
+</div>\
+<div id="tool-attributes-bar"><div id="pen-attribute-box" class="box" style="display:none">\
+				<div id="pensizepicker" class="sizepicker">\
+                                        <a> Pen Size</a>\
+					<span class="brush-width-min"> 1 px</span>\
+					<input type="range" min="1" max="50" value="5">\
+					<span class="brush-width-max"> 50 px</span>\
+					<span class="brush-width-val"> (5 px)</span>\
+                                </div>\
+                      </div>\
+                      <div id="erasor-attribute-box" class="box" style="display:none">\
+				<div id="erasersizepicker" class="sizepicker">\
+					<a> Erasor Size</a>\
+                                        <span class="brush-width-min"> 1 px</span>\
+					<input type="range" min="1" max="50" value="5">\
+					<span class="brush-width-max"> 50 px</span>\
+					<span class="brush-width-val"> (5 px)</span>\
+                                </div>\
+                      </div>\
+                      </div>';
     LC.makeColorPicker = function($el, title, callback) {
         var cp;
         $el.data("color", "rgb(0, 0, 0)");

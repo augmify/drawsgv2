@@ -7,10 +7,8 @@ block overlay
 
 block styles
 	if env == "development"|| env == "production"
-		link(rel="stylesheet", href="/css/image.css")
-		link(rel="stylesheet", href="/css/profile.css")
+		link(rel="stylesheet", href="/css/profile-new.css")
 	else if env == "local"
-		link(rel="stylesheet/less", href="/css/image.less")
 		link(rel="stylesheet/less", href="/css/profile-new.less")
 		script(src="/js/libs/less-1.1.5.min.js")	
 
@@ -23,53 +21,74 @@ block append header
 
 block main
 	#main
-		#meta
-			
+		#profile-header
 			img#pimage(src="https://graph.facebook.com/#{ other.id }/picture?type=square")
-			.meta-container
-				.subcontainer
-					.statistic
-						.profile-number #{images.length}
-						.profile-type doodles
-					.statistic
-						if other.followers
-							.profile-number #{other.followers.length} 
-						else
-							.profile-number 0
-						.profile-type followers
-					.statistic
-						if other.following
-							.profile-number #{other.followings.length}
-						else
-							.profile-number 0
-						.profile-type following
-				.edit-btn.phone-style-btn #{other.name}
-		#action-bar
-			#show-grid-action.action-item.action-item-small.actived-action
-				img(src="/img/music.png")
-			#show-list-action.action-item.action-item-small
-				img(src="/img/pan.png")
-			.action-item.action-item-lastone.phone-style-btn
-				img(src="/img/map-marker.png")
-				|&nbsp;Photo map&nbsp
+			#name-container #{other.name}
+		div.clearfix(style="padding: 5px 10px;)
+			div.metacontainer
+				table
+					tr                        
+						td#img-count.profile-number #{images.length}
+						td#follower-count.profile-number #{other.followers.length} 
+						td#following-count.profile-number #{other.followings.length}
+			#action-bar
+				span#show-grid-action.action-item.actived-action
+				span#show-list-action.action-item
 		#image-grid
 			#images
 				if images.length > 0
 					each image in images
-						div.img-item 
-							img.gridimage(src="#{ imghost }#{ image.name }",onClick="imgClick('/image/#{image._id}')")
+						div.img-wrapper
+							div.img-item 
+								img.gridimage(src="#{ imghost }#{ image.name }",onClick="imgClick('/image/#{image._id}')")
 				else
 					#{other.name} has no drawings now!
 		#image-list
 			#images
 				if images.length > 0
-					each image in images
-						div.img-list-item
-							img.draw_icon(src="https://graph.facebook.com/#{ other.id }/picture?type=square")
-							#drawing
-								#time
-									span.timespan #{new Date(image.age).toDateString()}
-								img.drawing_pic(src="#{ imghost }#{ image.name }",,onClick="imgClick('/image/#{image._id}')")
+					each img in images
+						.list-img-item
+							#meta
+								a(href="/profile/#{ img.uid }")
+									img#uimage(src="https://graph.facebook.com/#{ img.uid }/picture?type=square")
+								a#uname= img.uname
+								a.timestamp= img.posttime
+							#image
+								img(src='#{ imghost }#{ img.name }')
+							#info
+								.row#likes
+									.icon
+									.text <span id='likescount'>#{ img.likes.length }</span> likes
+								.row#comments
+									.icon
+									.text 
+										.cline
+											img.pimage(src="https://graph.facebook.com/#{ img.uid }/picture?type=square")
+											a.comment-uname(href="/profile/#{img.uid}")= img.uname
+											span.comment=img.caption
+										.comment-viewall
+											a(href="/comments/#{img._id}") view all #{ img.comments.length } comments
+										each comment in img.comments
+											.cline
+												img.pimage(src="https://graph.facebook.com/#{ comment.uid }/picture?type=square")
+												a.comment-uname(href="/profile/#{ comment.uid }")=comment.uname
+												span.comment #{comment.comment}
+							#buttons
+								if user == "guest"
+									.button#share(data-imgid="#{img._id}")
+										.btimage
+								else 
+									if img.likes.length>0
+										#like.button.liked(data-imgid="#{img._id}")
+											.btimage
+									else
+										#like.button(data-imgid="#{img._id}")
+											.btimage
+									#comment.button(data-imgid="#{img._id}") 
+										.btimage
+									#share.button(data-imgid="#{img._id}")
+										.btimage
+								div(style="clear:both")
 				else
 					#{other.name} has no drawings now!
 
@@ -77,5 +96,4 @@ block main
 	input#follower_id(type="hidden",value="#{other.id}")
 block scripts
 	script(type='text/javascript', src="/js/libs/zepto.js")
-	script(type='text/javascript', src="/js/scripts/image.js")
 	script(type='text/javascript', src="/js/scripts/profile.js")

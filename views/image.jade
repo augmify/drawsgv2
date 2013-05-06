@@ -27,7 +27,7 @@ block main
 			a(href="/profile/#{ img.uid }")
 				img#uimage(src="https://graph.facebook.com/#{ img.uid }/picture?type=square")
 			a#uname= img.uname
-			a#caption= img.caption
+			a.timestamp= img.posttime
 		#image
 			img(src='#{ imghost }#{ img.name }')
 		#info
@@ -37,29 +37,39 @@ block main
 			.row#comments
 				.icon
 				.text 
-					.commentstop view all #{ img.comments.length } comments
+					.cline
+						img.pimage(src="https://graph.facebook.com/#{ img.uid }/picture?type=square")
+						a.comment-uname(href="/profile/#{img.uid}")= img.uname
+						span.comment=img.caption
+					.comment-viewall
+						a(href="/comments/#{img._id}") view all #{ img.comments.length } comments
 					each comment in img.comments
-						.comment
-							a(href="/profile/#{ comment.uid }")
-								img#pimage(src="https://graph.facebook.com/#{ comment.uid }/picture?type=square")
+						.cline
+							img.pimage(src="https://graph.facebook.com/#{ comment.uid }/picture?type=square")
+							a.comment-uname(href="/profile/#{ comment.uid }")=comment.uname
 							span.comment #{comment.comment}
 		#buttons
 			if user == "guest"
-				.button#share share	
+				.button#share
+					.btimage
 			else 
 				if liked
-					.button#like.liked unlike
+					.button#like.liked
+						.btimage
 				else
-					.button#like like
-
-				.button#comment
-				.button#share share
-
+					.button#like
+						.btimage
+				.button#comment 
+					.btimage
+				.button#share
+					.btimage
 				if owner
-					.button#delete delete
-
+					.button#delete
+						.btimage
+			div(style="clear:both")
 	input#hidden_at(type="hidden",value="#{user.accessToken}")
 	input#hidden_id(type="hidden",value="#{user.id}")
+	input#hidden_imgid(type="hidden",value="#{img._id}")
 	input#hidden_shared(type="hidden", value="#{shared}")
 		
 	footer

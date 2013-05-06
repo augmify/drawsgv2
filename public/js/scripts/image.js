@@ -102,21 +102,23 @@ $(function(){
 	};
 
 	var comment = function(){
-		var caption = _.template("<div id='caption'><div id='close'></div><a id='title'>Add a Comment!</a><textarea id='captiontext' autofocus name='caption'></textarea><a id='submit'>Submit</a></div>");
-		$("#overlay").html(caption()).animate({opacity: 1}, 100, "ease").show();
-		$("#captiontext").focus();
-			
-		$("#submit").on('click', function(){
-				postcomment($("#captiontext").val());
-				setTimeout(function(){
-					$("#overlay").hide();
-				}, 300);
-			});
-		$("#close").on('click', function(){
-			setTimeout(function(){
-			$("#overlay").hide();
-		}, 300);
-		});
+                var imgid= $("#hidden_imgid").val();
+                window.location.href = '/comments/' + imgid;
+//		var caption = _.template("<div id='caption'><div id='close'></div><a id='title'>Add a Comment!</a><textarea id='captiontext' autofocus name='caption'></textarea><a id='submit'>Submit</a></div>");
+//		$("#overlay").html(caption()).animate({opacity: 1}, 100, "ease").show();
+//		$("#captiontext").focus();
+//			
+//		$("#submit").on('click', function(){
+//				postcomment($("#captiontext").val());
+//				setTimeout(function(){
+//					$("#overlay").hide();
+//				}, 300);
+//			});
+//		$("#close").on('click', function(){
+//			setTimeout(function(){
+//			$("#overlay").hide();
+//		}, 300);
+//		});
 	};	
 
 	var share = function(){

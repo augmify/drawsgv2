@@ -1,0 +1,242 @@
+@import "base";
+/**
+* header
+*/
+@headercolor: #b52c38;
+
+.header-button() {
+	.vertical(lighten(@headercolor, 0%), lighten(@headercolor, 2%));
+	height: 20px;
+	line-height: 20px;
+	font-size: 20px;
+	border-radius: 5px;
+	color: white;
+	padding: 5px 11px;
+	border: solid 1px darken(@headercolor, 10%);
+}
+header {
+	#avatar {
+        overflow: hidden;
+		height: 40px;
+		width: 40px;
+		border-radius: 6px;
+		background-color: white;
+		position: absolute;
+		right: 4px;
+		top: 5px;
+	}
+	#browse, #back {
+		position: absolute;
+		left: 5px;
+		top: 10px;
+        .header-button();
+	}
+	#follow{
+    	position: absolute;
+		right: 5px;
+		top: 10px;
+        .header-button();
+    }
+    
+}
+
+#overlay {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	height: 100%;
+	width: 100%;
+	#info {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -35px;
+		margin-left: -35px;
+		border-radius: 10px;
+		height: 23px;
+		width: 50px;
+		padding: 24px 10px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		span {
+			position: absolute;
+			left: 0;
+			bottom: 10px;
+			width: 100%;
+			display: block;
+			color: white;
+			line-height: 20px;
+			font-size: 17px;
+		}
+		.overlayicon {
+			position: absolute;
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-origin: content-box;
+			top: 9px;
+			left: 16px;
+			height: 25px;
+			width: 25px;
+			padding: 5px;
+			&#loading {
+				background-image: url(/img/loading.gif);
+			}
+			&#heart {
+				background-image: url(/img/heart.png);
+			}
+		}
+	}
+	#error {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -45px;
+		margin-left: -100px;
+		border-radius: 10px;
+		height: 60px;
+		width: 180px;
+		padding: 15px 10px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		font-size: 18px;
+	}
+		#caption {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -90px;
+		margin-left: -120px;
+		border-radius: 10px;
+		height: 180px;
+		width: 240px;
+		padding: 0px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		font-size: 22px;
+		#close {
+			position: absolute;
+			top: -10px;
+			right: -10px;
+			height: 25px;
+			width: 25px;
+			padding: 2px;
+			background-image: url(/img/close.png);
+			background-color: white;
+			background-origin: content-box;
+			background-repeat: no-repeat;
+			border-radius: 100px;
+			background-size: 100%;
+		}
+		#title {
+			display: block;
+			margin-top: 10px;
+			padding: 5px;
+			font-weight: bold;
+			line-height: 22px;
+			height: 22px;
+		}
+		textarea {
+			width: 190px;
+			height: 50px;
+			border-radius: 5px;
+			padding: 5px;
+			margin: 5px;
+			font-family: inherit;
+			font-size: inherit;
+			outline:none;
+			resize: none;
+		}
+		#submit {
+			display: block;
+			font-size: 20px;
+			width: 190px;
+			padding: 5px;
+			margin: 5px auto;
+			border-radius: 5px;
+			border:solid 1px darken(@headercolor,10);
+			.vertical(@headercolor,darken(saturate(@headercolor,10),10));
+		}
+	}
+}
+
+#main {
+    background-color: #efefef;
+    position: relative;
+    margin-top: 2px;
+    min-height: 70%;
+}
+footer {
+	border-top: dashed 1px @headercolor;
+	height: 30%;
+	background-color: #e5e5e5;
+}
+
+
+#comments {
+    position: absolute;
+    top: 5px;
+    bottom: 40px;
+    left: 5px;
+    right: 5px;
+    margin-top: 5px;
+    overflow: auto;
+    margin-bottom: 5px;
+    .cline{
+        margin-bottom: 10px;
+        position: relative;
+        padding-left: 45px;
+        .pimage {height: 35px; width: 35px; position: absolute; left: 5px; top: 5px; vertical-align: middle;}
+        .comment-uname{font-size: 12px;color: #006a92; font-weight: 600; padding: 0 5px; text-decoration: none}
+        .comment{font-size: 14px; color: #333;}
+        .timestamp {
+            margin-top: 5px;
+            display: block;
+            margin-left: 10px;
+            font-size: 12px;
+            color: #aaa;
+	}
+    }
+}
+#ibox {
+    position: absolute;
+    height: 30px;
+    bottom: 5px;
+    left: 0px;
+    right: 0px;
+    #cinput {
+        position: absolute;
+        height: 20px;
+        left: 5px;
+        right: 80px;
+    }
+    #sendbtn {
+        position: absolute;
+        right: 15px;
+        height: 25px;
+        width: 50px;
+        border-radius: 8px;
+        line-height: 25px;
+        text-align: center;
+	font-size: 14px;
+	border-radius: 5px;
+	color: white;
+        .vertical(lighten(@headercolor, 0%), lighten(@headercolor, 2%));
+    }
+}
+.clearfix {
+        display: block;
+}
+.clearfix:after {
+        content: ".";
+        display: block;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+        height: 0;
+}

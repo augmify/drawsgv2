@@ -6,34 +6,13 @@ block styles
 		link(rel="stylesheet", href="/css/literally.css")
 	else if env == "local" 	
 		link(rel="stylesheet", href="/css/literallycanvas/colorpicker.css")	
-		link(rel="stylesheet", href="/css/literallycanvas/literally.css")	
-		link(rel="stylesheet", href="/css/draw.css")
+		link(rel="stylesheet", href="/css/literallycanvas/literally.css")
+		link(rel="stylesheet/less", href="/css/draw.less")
 		script(src="/js/libs/less-1.1.5.min.js")
 		
 
 block append header
-	#toolbar 
-		#toolbartext More Tools
-		#slider
-			#pen.box
-				a Pen Size
-				#pensizepicker.sizepicker
-					span.brush-width-min 1 px
-					input(type="range", min="1", max="50", value="5")
-					span.brush-width-max 50 px
-					span.brush-width-val (5 px)
-					
-
-			#eraser.box
-				a Eraser Size
-				#erasersizepicker.sizepicker
-					span.brush-width-min 1 px
-					input(type="range", min="1", max="50", value="10")
-					span.brush-width-max 50 px
-					span.brush-width-val (10 px)
-
-
-
+	#back Back
 	#save Save
 
 block overlay
@@ -51,7 +30,7 @@ block scripts
 	if env == "development" || env == "production"
 		script(type='text/javascript', src="/js/libs/zub.js")
 		script(type='text/javascript', src="/js/scripts/draw.js")
-		script(type='text/javascript', src="/js/libs/literallycanvas.min.js")
+		script(type='text/javascript', src="/js/libs/literallycanvas/literallycanvas.fat.js")
 	else if env == "local" 
 		script(type='text/javascript', src="/js/libs/jquery-1.7.2.js")
 		script(type='text/javascript', src="/js/libs/underscore.js")

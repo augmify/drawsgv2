@@ -1,204 +1,434 @@
-@common-bg-color: #fafafa;
-@common-blk-border: #efefef;
-/* */
-@common-blk-border-radius: 10px;
-@profile-img-size: 80px;
-@profile-img-padding: 8px;
-#meta {
-    background-color: @common-bg-color;
-    border: 2px solid @common-blk-border;
-    border-radius: @common-blk-border-radius;
-    
-    #pimage {
-        position: absolute;
-        border-right: 2px solid @common-blk-border;
-        height: @profile-img-size;
-        width: @profile-img-size;
-        left: 0;
-        top: 0;
-        padding: @profile-img-padding;
-    }
-    .meta-container {
-        position: relative;
-        padding-left: @profile-img-size + @profile-img-padding * 2;
-        height: @profile-img-size + @profile-img-padding * 2;
-        @subcontainer-height: 45px;
-        .subcontainer{
-            height: @subcontainer-height;
-            position: relative;
-            border-bottom: 2px solid @common-blk-border;
-            .statistic {
-                position: relative;
-                width: 33%;
-                display: inline-block;
-                text-align: center;
-                .profile-number {
-                    font-weight: 700;
-                    font-size: 24px;
-                    line-height: 25px;
-                    text-overflow: ellipsis;
-                }
-                .profile-type {
-                    font-size: 16px;
-                }
-            }
-            .statistic:before{
-                content: '';
-                position: absolute;
-                width: 2px;
-                height: @subcontainer-height;
-                background-color: @common-blk-border;
-                left: 0px;
-            }
-        } 
-        @edit-btn-height: 45px;
-		.phone-style-btn{
-			line-height: @edit-btn-height;
-		}
-		.phone-style-btn:after {
-			top: @edit-btn-height/2 - 10px;
-		}
-    }
-    .namecontainner {
-        border-top: 2px solid @common-blk-border;
-        padding: 8px;
-        #pname {
-            font-size: 18px;
-            font-weight: bold;
-        }
-    }
+@import "base";
+@light: #e5e5e5;
+.clearfix {
+        display: block;
+}
+.clearfix:after {
+        content: ".";
+        display: block;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+        height: 0;
 }
 
-.phone-style-btn {
-	position: relative;
-	padding-left: 15px;
-	cursor: pointer;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-}
-.phone-style-btn:active {
-	background: #ddd;
-}
-.phone-style-btn:after {
-	content: '';
+#overlay {
 	position: absolute;
-	display: block;
-	height: 21px;
-	width: 8px;
-	right: 25px;
-	background: url(/img/right-grey-arrow.png) no-repeat center center; 
-	background-size: cover;
-}
-@action-bar-height: 50px;
-#action-bar{
-    border: 2px solid @common-blk-border;
-    margin: 10px;
-    position: relative;
-    background-color: @common-bg-color;
-    border-radius: @common-blk-border-radius;
-    @action-item-width: 60px;
-    @action-item-padding: 5px;
-    .action-item {
-        position: relative;
-        display: inline-block; 
-        text-align: center;
-        border-left: 2px solid @common-blk-border;
-        padding: @action-item-padding;
-        img {
-            width: 18px;
-            height: 18px;
-            filter: grayscale(50%);
-        }
-    }
-    .action-item:hover {
-        cursor: pointer;
-    }
-    .action-item:first-child {
-        border-left: none !important;
-    }
-    .action-item-small{
-        width: @action-item-width;
-    }
-    .action-item-lastone{
-        position: absolute;
-        right: 0px;
-        left: 150px;
-    }
-	.phone-style-btn{
-	}
-	.phone-style-btn:after {
-		top: 5px;
-	}
-    .action-item-lastone img {
-		margin-right: 10px;
-    }
-    .actived-action:before {
-        content: '';
-        position: absolute;
-        display: block;
-        left: @action-item-width/2 + @action-item-padding - 8;
-        bottom: -6px;
-        height: 0;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-top: 6px solid @common-blk-border;
-    }
-    .actived-action:after {
-        content: '';
-        position: absolute;
-        display: block;
-        left: @action-item-width/2 + @action-item-padding - 8;
-        bottom: -4px;
-        height: 0;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-top: 6px solid @common-bg-color;
-    }
-}
-
-#image-grid {
-    margin: 10px;
-    over-flow: auto;
-    .img-item {
-        display: inline-block;
-		width: 33.3%;
-        .gridimage{
-            width: 98%;
-            height: 98%;
-            margin:2px;
-        }
-    }
-}
-#image-list {
-    display: none;
-    margin: 10px;
-    over-flow: auto;
-	.img-list-item {
-		display: block;
-		background-color: @common-bg-color;
-		border: 2px solid @common-blk-border;
-		border-radius: @common-blk-border-radius;
-		position:relative;
-		.draw_icon{
+	top: 0;
+	left: 0;
+	z-index: 5;
+	height: 100%;
+	width: 100%;
+	#info {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -35px;
+		margin-left: -35px;
+		border-radius: 10px;
+		height: 23px;
+		width: 50px;
+		padding: 24px 10px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		span {
 			position: absolute;
-			border-right: 2px solid #EFEFEF;
-			height: 80px;
-			width: 80px;
 			left: 0;
-			top: 50px;
-			padding: 8px;
+			bottom: 10px;
+			width: 100%;
+			display: block;
+			color: white;
+			line-height: 20px;
+			font-size: 17px;
 		}
-		#drawing{
-			position: relative;
-			padding-left: 96px;
-			.time{
-				.timespan{
+		#loading {
+			position: absolute;
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-image: url(/img/loading.gif);
+			background-origin: content-box;
+			top: 9px;
+			left: 16px;
+			height: 25px;
+			width: 25px;
+			padding: 5px;
 
-				}
-			}
+
 		}
-		
-		
-    }
+	}
+	#error {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -45px;
+		margin-left: -100px;
+		border-radius: 10px;
+		height: 60px;
+		width: 180px;
+		padding: 15px 10px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		font-size: 18px;
+	}
+	#caption {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -90px;
+		margin-left: -120px;
+		border-radius: 10px;
+		height: 180px;
+		width: 240px;
+		padding: 0px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		font-size: 22px;
+		#close {
+			position: absolute;
+			top: -10px;
+			right: -10px;
+			height: 25px;
+			width: 25px;
+			padding: 2px;
+			background-image: url(/img/close.png);
+			background-color: white;
+			background-origin: content-box;
+			background-repeat: no-repeat;
+			border-radius: 100px;
+			background-size: 100%;
+		}
+		#title {
+			display: block;
+			margin-top: 10px;
+			padding: 5px;
+			font-weight: bold;
+			line-height: 22px;
+			height: 22px;
+		}
+		textarea {
+			width: 190px;
+			height: 50px;
+			border-radius: 5px;
+			padding: 5px;
+			margin: 5px;
+			font-family: inherit;
+			font-size: inherit;
+			outline:none;
+			resize: none;
+		}
+		#submit {
+			display: block;
+			font-size: 20px;
+			width: 190px;
+			padding: 5px;
+			margin: 5px auto;
+			border-radius: 5px;
+			border:solid 1px darken(@headercolor,10);
+			.vertical(@headercolor,darken(saturate(@headercolor,10),10));
+		}
+	}
 }
+
+/**
+* Header
+*/
+header {
+	z-index: 1;
+	#home {
+		position: absolute;
+		left: 5px;
+		top: 5px;
+		.vertical(lighten(@headercolor, 0%), lighten(@headercolor, 2%));
+		height: 20px;
+		line-height: 17px;
+		font-size: 17px;
+		border-radius: 5px;
+		color: white;
+		padding: 5px 11px;
+		border: solid 1px darken(@headercolor, 10%);
+	}
+	#follow {
+		position: absolute;
+		right: 5px;
+		top: 5px;
+		.vertical(lighten(@headercolor, 0%), lighten(@headercolor, 2%));
+		height: 20px;
+		line-height: 17px;
+		font-size: 17px;
+		border-radius: 5px;
+		color: white;
+		padding: 5px 11px;
+		border: solid 1px darken(@headercolor, 10%);
+	}
+}
+footer {
+	margin-top: 20px;
+	border-top: dashed 1px @headercolor;
+	height: 30%;
+	background-color: #e5e5e5;
+}
+
+#main{
+    #profile-header{
+        position: relative;
+        margin-top: 2px; 
+        border-radius: 15px 15px 0 0;
+        border: 1px solid #ddd;
+        height: 150px;
+        width: 100%;
+        background: url(/img/sky.jpg);
+        background-size: 100% auto;
+        #pimage{
+            z-index: 2;
+            position: absolute;
+            border-radius: 100%;
+            left: 10%;
+            bottom: 10px;
+            width: 80px;
+            height: 80px;
+            border: 3px solid white;
+        }
+        #name-container{
+            position: absolute;
+            background: black;
+            height: 50px;
+            line-height: 50px;
+            color: white;
+            font-size: 24px;
+            width: 100%;
+            text-align: center;
+            padding-left: 10%;
+            bottom: 0px;
+            opacity: 0.5;
+        }
+    }
+
+    .metacontainer{
+        width: 250px;
+        float: left;
+        font-size: 24px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        padding: 3px;
+        color: white;
+        table{
+            width: 100%;
+            td{
+                text-align: right;
+                padding-right: 5px;
+                vertical-align: middle;
+                border: 1px solid white;
+                width: 33%;
+                height: 30px;
+                background-color: #777;
+                text-overflow: ellipsis;
+            }
+            #img-count{
+                background: url(/img/senceui/profile/drawSG_ui-02.png) center no-repeat;
+                background-size: 100% auto;
+            }
+            #follower-count{
+                background: url(/img/senceui/profile/drawSG_ui-03.png) center no-repeat;
+                background-size: 100% auto;
+            }
+            #following-count{
+                background: url(/img/senceui/profile/drawSG_ui-04.png) center no-repeat;
+                background-size: 100% auto;
+            }
+        }
+    }
+    #action-bar{
+        float: right;
+        width: 80px;
+        padding: 3px;
+        #show-grid-action{
+            margin-right: 10px;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: url(/img/grid.png) center;
+            background-size: 90% auto;
+        }
+        #show-list-action{
+            margin-right: 10px;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: url(/img/list.png) center;
+            background-size: 90% auto;
+        }
+        #show-grid-action{
+            &.actived-action{
+                background: url(/img/grid-actived.png) center !important;
+                background-size: 90% auto !important;
+            } 
+        }
+        #show-list-action{
+            &.actived-action{
+                background: url(/img/list-actived.png) center !important;
+                background-size: 90% auto !important;
+            } 
+        }
+        #show-list-action{
+            margin-right: 10px;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-size: 30px 30px;
+            background: url(/img/list.png) center;
+        }
+        img{
+            width: 30px;
+            height: 30px;
+        }
+    }
+    #image-grid{
+        margin-left: 5px;
+        .img-wrapper{
+            display: inline-block;
+            width: 33%;
+            .img-item{
+                padding: 5px;
+                .gridimage{
+                    width: 100%;
+                    margin:10px;
+                }
+            }
+        }
+        
+    }
+    #image-list{
+        display: none;
+        #meta {
+            margin: 5px;
+            height:50px;
+            padding-left: 50px;
+            position: relative;
+            #uimage {
+                    height: 40px;
+                    width: 40px;
+                    position: absolute;
+                    left: 5px;
+                    top: 10px;
+            }
+            #uname {
+                    display: block;
+                    float: left;
+                    line-height: 50px;
+                    font-size: 12px;
+                    color: #006a92;
+                    font-weight: 600;
+            }
+            .timestamp {
+                    display: block;
+                    position: relative;
+                    float: right;
+                    margin-right:15px;
+                    line-height: 50px;
+                    font-size: 12px;
+            }
+            .timestamp:before {
+                content: "";
+                display: block;
+                position: absolute;
+                left: -20px;
+                top: 16px;
+                width: 16px;
+                height: 16px;
+                background-image: url("/img/timestamp.png")
+            }
+        }
+        #image {
+                margin: 5px 10px;
+                img {
+                        background-color: white;
+                        width: 100%;
+                }
+        }
+        #info {
+                margin: 5px;
+                font-size: 14px;
+                .row {
+                    position: relative;
+                    width: 100%;
+                    .icon {
+                            width: 16px;
+                            height: 16px;
+                            padding: 2px;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            background-origin: content-box;
+                            background-size: 100%;
+                            background-repeat: no-repeat;
+                    }
+                    .text {
+                            line-height: 20px;
+                            margin-left: 25px;
+                    }
+                }
+                #likes {
+                    .icon {
+                            background-image: url(/img/heart.png);
+                    }
+                }
+                #comments {
+                    margin-top: 5px;
+                    .icon {
+                            background-image: url(/img/comment.png);
+                    }
+                    .text {
+                        .comment-viewall{cursor:pointer; font-size: 12px; color: #aaa; padding: 5px 0px;text-decoration: none;  }
+                        .cline{
+                            .pimage {height: 16px; width: 16px;}
+                            .comment-uname{
+                                font-size: 12px;
+                                color: #006a92;
+                                font-weight: 600;padding: 0 5px;
+                            }
+                            .comment{font-size: 14px; color: #333;}
+                        }
+                    }
+                }
+
+        }
+        #buttons {
+                padding: 10px;
+                .button {
+                    height: 30px;
+                    width: 35px;
+                    float: left;
+                    margin-right: 12px;
+                    border-radius: 8px;
+                    border: 1px solid #aaa;
+                    &#like .btimage{
+                        background: url(/img/senceui/profile/drawSG_ui-54.png) center no-repeat;
+                        background-size: 60% auto;
+                    }
+                    &#share .btimage{
+                        background: url(/img/share.png) center no-repeat;
+                    }
+                    &#comment .btimage{
+                        background: url(/img/comment.png) center no-repeat;
+                    }
+                    &#delete .btimage{
+                        background: url(/img/delete.png) center no-repeat;
+                    }
+                    &.liked .btimage{
+                        background: url(/img/senceui/profile/drawSG_ui-55.png) center no-repeat !important;
+                        background-size: 60% auto !important;
+                    }
+                    .btimage{
+                        height: 30px;
+                        text-align: center;
+                    }
+                    .vertical(white, #ddd);
+                }
+
+        }
+
+    }
+}   

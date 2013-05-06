@@ -17,6 +17,7 @@
     "mongodb" : "*",
     "redis" : "*",
     "uglify-js" : "*",
-    "fbgraph": "*"
+    "fbgraph": "*",
+    "moment" : "*"
   }
 }
