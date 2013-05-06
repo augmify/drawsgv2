@@ -70,7 +70,7 @@ $(function(){
 			//update display
 			$("#likescount").html( parseInt($("#likescount").html(),10) - 1 );
 			//update button
-			$("#like").html("like").removeClass("liked");
+			$("#like").removeClass("liked");
 			overlay.flash("<div id='info'><span>unliked.</span><div class='overlayicon' id='heart'></div></div>");
 			//post
 			$.post(window.location.pathname,{
@@ -82,7 +82,7 @@ $(function(){
 			//update display
 			$("#likescount").html( parseInt($("#likescount").html(),10) + 1 );
 			//update button
-			$("#like").html("unlike").addClass("liked");
+			$("#like").addClass("liked");
 			overlay.flash("<div id='info'><span>liked!</span><div class='overlayicon' id='heart'></div></div>");
 			//post
 			$.post(window.location.pathname,{
