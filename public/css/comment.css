@@ -509,17 +509,18 @@ footer {
 }
 #ibox #cinput {
   position: absolute;
-  height: 20px;
+  height: 32px;
   left: 5px;
   right: 80px;
+  border-radius: 8px;
 }
 #ibox #sendbtn {
   position: absolute;
   right: 15px;
-  height: 25px;
+  height: 32px;
   width: 50px;
   border-radius: 8px;
-  line-height: 25px;
+  line-height: 32px;
   text-align: center;
   font-size: 14px;
   border-radius: 5px;
