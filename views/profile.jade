@@ -14,7 +14,10 @@ block styles
 
 block append header
 		#home home
-		#follow follow
+		if canfollow
+			#follow follow
+		else if canunfollow
+			#unfollow unfollow
 
 	if user != "guest"
 		img#avatar(src="https://graph.facebook.com/#{ user.id }/picture?type=square")

@@ -59,6 +59,17 @@ db.open(function(err, db) {
             });
         });
     };
+    
+    exports.findUsers = function(userIdArray, callback) {
+        db.collection('users', function(err, users){
+            if (err){
+                console.log(err);
+                return callback(err, {});
+            }
+            users.find({id : {$in: userIdArray}}).toArray(callback);
+        });
+    }
+    
     exports.findOrCreateUser = function(user, accessToken, callback){
         db.collection('users', function(err, users){
             if (err){

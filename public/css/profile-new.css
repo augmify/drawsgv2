@@ -402,7 +402,8 @@ header #home {
   padding: 5px 11px;
   border: solid 1px #8c222b;
 }
-header #follow {
+header #follow,
+header #unfollow {
   position: absolute;
   right: 5px;
   top: 5px;
@@ -468,7 +469,7 @@ footer {
   z-index: 2;
   position: absolute;
   border-radius: 100%;
-  left: 10%;
+  left: 6%;
   bottom: 10px;
   width: 80px;
   height: 80px;
@@ -481,10 +482,11 @@ footer {
   line-height: 50px;
   color: white;
   font-size: 24px;
-  width: 100%;
   text-align: center;
-  padding-left: 10%;
+  padding-left: 6%;
   bottom: 0px;
+  right: 0px;
+  left: 0px;
   opacity: 0.5;
 }
 #main .metacontainer {
@@ -508,6 +510,7 @@ footer {
   height: 30px;
   background-color: #777;
   text-overflow: ellipsis;
+  cursor: pointer;
 }
 #main .metacontainer table #img-count {
   background: url(/img/senceui/profile/drawSG_ui-02.png) center no-repeat;

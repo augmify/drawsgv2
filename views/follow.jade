@@ -8,8 +8,7 @@ block styles
 		script(src="/js/libs/less-1.1.5.min.js")	
 
 block append header
-	#home home
-	//- #refresh
+	#back back
 
 block overlay
 	#info 
@@ -18,31 +17,30 @@ block overlay
 
 block main
 	#main.clearfix
-		#nav
-			a#popular.active Popular
-			//- a#liked Liked
-			a#latest Latest
-			a#yours Yours
-		#images
-			if images.length > 0
-				each image in images
-					a.image(href='/image/#{ image._id }')
-						img(src="#{ imghost }#{ image.name }")
+		#userlist
+			if userArray.length > 0
+				each fuser in userArray
+					.uline.clearfix
+						img.uimage(src="https://graph.facebook.com/#{ fuser.id }/picture?type=square")
+						.name
+							.username #{fuser.username}
+							.displayname #{fuser.name}
+						if fuser.canFollow
+							.follow-btn Follow
+						else if fuser.canUnFollow
+							.unfollow-btn UnFollow
 			else
-				a no images :( draw one!
+				div not found!
 
 
 	footer
 
 block scripts
 	script(type='text/javascript')
-		var imghost = '#{ imghost }';
 
 	if env == "development"|| env == "production"
-		script(type='text/javascript', src="/js/libs/zub.js")
-		script(type='text/javascript', src="/js/scripts/browse.js")
+		script(type='text/javascript', src="/js/libs/zepto.js")
+		script(type='text/javascript', src="/js/scripts/follow.js")
 	else if env == "local"
 		script(type='text/javascript', src="/js/libs/zepto.js")
-		script(type='text/javascript', src="/js/libs/underscore.js")
-		script(type='text/javascript', src="/js/libs/backbone.js")
-		script(type='text/javascript', src="/js/scripts/browse.js")
+		script(type='text/javascript', src="/js/scripts/follow.js")

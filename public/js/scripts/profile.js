@@ -52,12 +52,21 @@ $(function(){
 		}
 	});
 	$('#follow').click(function(){
-        var _followId =  $('#follower_id').val();
-        $.post('/follow', {followId:_followId},function(response){
-	        alert(reponse);
-            Location.reload();
-        });
+            var _followId =  $('#follower_id').val();
+            $.post('/follow', {followId:_followId},function(response){
+                    alert(reponse);
+                Location.reload();
+            });
 	});
+        $('#follower-count').click(function(){
+            var userid = $('#follower_id').val();
+            window.location.href = '/followers/'+userid;
+        });
+        $('#following-count').click(function(){
+            var userid = $('#follower_id').val();
+            window.location.href = '/followings/'+userid;
+        });
+        
 	$('#show-grid-action').click(function() {
 		$('#image-grid').show();	
 		$('#image-list').hide();	

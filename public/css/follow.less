@@ -1,0 +1,209 @@
+@import "base";
+@light: #e5e5e5;
+.clearfix {
+        display: block;
+}
+.clearfix:after {
+        content: ".";
+        display: block;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+        height: 0;
+}
+
+#overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	height: 100%;
+	width: 100%;
+	#info {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -35px;
+		margin-left: -35px;
+		border-radius: 10px;
+		height: 23px;
+		width: 50px;
+		padding: 24px 10px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		span {
+			position: absolute;
+			left: 0;
+			bottom: 10px;
+			width: 100%;
+			display: block;
+			color: white;
+			line-height: 20px;
+			font-size: 17px;
+		}
+		#loading {
+			position: absolute;
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-image: url(/img/loading.gif);
+			background-origin: content-box;
+			top: 9px;
+			left: 16px;
+			height: 25px;
+			width: 25px;
+			padding: 5px;
+
+
+		}
+	}
+	#error {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -45px;
+		margin-left: -100px;
+		border-radius: 10px;
+		height: 60px;
+		width: 180px;
+		padding: 15px 10px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		font-size: 18px;
+	}
+	#caption {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -90px;
+		margin-left: -120px;
+		border-radius: 10px;
+		height: 180px;
+		width: 240px;
+		padding: 0px;
+		text-align: center;
+		.trans-background(#000000, 0.8);
+		color: white;
+		font-size: 22px;
+		#close {
+			position: absolute;
+			top: -10px;
+			right: -10px;
+			height: 25px;
+			width: 25px;
+			padding: 2px;
+			background-image: url(/img/close.png);
+			background-color: white;
+			background-origin: content-box;
+			background-repeat: no-repeat;
+			border-radius: 100px;
+			background-size: 100%;
+		}
+		#title {
+			display: block;
+			margin-top: 10px;
+			padding: 5px;
+			font-weight: bold;
+			line-height: 22px;
+			height: 22px;
+		}
+		textarea {
+			width: 190px;
+			height: 50px;
+			border-radius: 5px;
+			padding: 5px;
+			margin: 5px;
+			font-family: inherit;
+			font-size: inherit;
+			outline:none;
+			resize: none;
+		}
+		#submit {
+			display: block;
+			font-size: 20px;
+			width: 190px;
+			padding: 5px;
+			margin: 5px auto;
+			border-radius: 5px;
+			border:solid 1px darken(@headercolor,10);
+			.vertical(@headercolor,darken(saturate(@headercolor,10),10));
+		}
+	}
+}
+
+/**
+* Header
+*/
+header {
+	z-index: 1;
+	#back {
+		position: absolute;
+		left: 5px;
+		top: 5px;
+		.vertical(lighten(@headercolor, 0%), lighten(@headercolor, 2%));
+		height: 20px;
+		line-height: 17px;
+		font-size: 17px;
+		border-radius: 5px;
+		color: white;
+		padding: 5px 11px;
+		border: solid 1px darken(@headercolor, 10%);
+	}
+}
+
+#main{
+    background-color: #efefef;
+    margin-top: 2px;
+    min-height: 100%;
+    
+    #userlist {
+        margin: 0 5px;
+        .uline{
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+            padding-left: 45px;
+            height: 45px;
+            .uimage {height: 35px; width: 35px; position: absolute; left: 5px; top: 5px; vertical-align: middle;}
+            .name{
+                height: 45px;
+                line-height: 20px;  
+                .username{
+                    font-size: 12px;color: #006a92; 
+                    font-weight: 600;
+                    text-decoration: none
+                }
+                .displayname{
+                    font-size: 14px; color: #333;
+                }
+            }
+            .follow-btn, .unfollow-btn{
+                position: absolute;
+                padding: 2px 8px;
+                font-size: 14px;
+                color: white;
+                line-height: 25px;
+                text-align: center;
+                border: 1px solid #aaa;
+                border-radius: 4px;
+                right: 5px;
+                top: 5px;
+                .vertical(white, #ddd);
+            }
+        }
+    }
+
+}
+
+.clearfix {
+        display: block;
+}
+.clearfix:after {
+        content: ".";
+        display: block;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+        height: 0;
+}

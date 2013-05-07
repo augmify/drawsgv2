@@ -60,7 +60,7 @@ app.get('/fb/image/:imgid', routes.fbimage);
 
 app.get('/profile/:userid',routes.profile);
 app.get('/followers/:userid', routes.followers);
-app.get('/following/:userid', routes.followings);
+app.get('/followings/:userid', routes.followings);
 app.get('/register',routes.register);
 //POST
 app.post('/image', routes.imageupload);
@@ -68,6 +68,7 @@ app.post('/browse', routes.browseimages);
 app.post('/draw', routes.updatecaption);
 app.post('/image/:imgid', routes.updateimage);
 app.post('/follow',routes.follow);
+app.post('/unfollow', routes.unfollow);
 app.post('/doLogin',routes.doLogin);
 app.post('/doRegister',routes.doRegister);
 

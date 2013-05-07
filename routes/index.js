@@ -83,7 +83,58 @@ exports.follow = function(req, res) {
         }
         res.send('success');
     });
+};
+
+exports.unfollow = function(req, res) {
+    if (!req.loggedIn)
+        return res.redirect('/');
+    var fuid = req.body.unfollowId;
+    var cid = req.user.id;
+    console.log(cid, fuid);
+    mongo.unfollow(cid, fuid, function(err, status) {
+        if (err) {
+            console.log(err);
+            return res.send('error');
+        }
+        res.send('success');
+    });
 }
+
+exports.followers = function(req, res) {
+    if (!req.loggedIn)
+        return res.redirect('/');
+    var userid = req.params.userid;
+    mongo.findUserById(userid, function(err, objusr) {
+        if (err || !objusr) {
+            //smth went wrong handle err
+            res.send("error");
+            return;
+        }
+        objusr.followers = objusr.followers||[];
+        mongo.findUsers(objusr.followers, function(err, followers){
+            if (err || !followers) {
+                res.send("error");
+                return;
+            }
+            
+            for(var i=0; i<followers.length; i++){
+                var f = followers[i];
+                var fids = f.followers || [];
+                if(f.id!=userid && fids.indexOf(userid)<0){
+                    f.canFollow = true;
+                }else if(f.id !=userid && fids.indexOf(userid)>-1){
+                    f.canUnFollow = true;
+                }
+            }
+            
+            var variables = utils.bootstrap(req);
+            variables.user = req.user;
+            variables.other = objusr;
+            variables.userArray = followers;
+            res.render('follow', variables);
+        });
+    });
+};
 
 exports.profile = function(req, res) {
     if (!req.loggedIn)
@@ -99,6 +150,13 @@ exports.profile = function(req, res) {
         console.log(users);
         variables.user = req.user;
         variables.other = users;
+        
+        var followers = users.followers||[];
+        var isself = false;
+        var followed = followers.indexOf(req.user.id)>=0;
+        variables.canfollow = !isself && !followed ;
+        variables.canunfollow = !isself && followed;
+        
         variables.other.followers = variables.other.followers || [];
         variables.other.followings       = variables.other.followings || [];
         variables.imghost = utils.imagehost;
@@ -191,7 +249,7 @@ exports.comment = function(req, res) {
         }
         res.render('comment', variables);
     });
-}
+};
 
 exports.register = function(req, res) {
     if (req.loggedIn)
