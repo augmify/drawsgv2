@@ -452,8 +452,11 @@ footer {
 }
 #main {
   background-color: #efefef;
-  margin-top: 2px;
-  min-height: 100%;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: 50px;
 }
 #main #profile-header {
   position: relative;

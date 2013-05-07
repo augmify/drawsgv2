@@ -570,8 +570,11 @@ footer {
 * main
 */
 #main {
-  margin-top: 2px;
-  min-height: 70%;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: 50px;
 }
 #canvas {
   display: block;
