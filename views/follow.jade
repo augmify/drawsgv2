@@ -20,21 +20,21 @@ block main
 		#userlist
 			if userArray.length > 0
 				each fuser in userArray
-					.uline.clearfix
-						img.uimage(src="https://graph.facebook.com/#{ fuser.id }/picture?type=square")
+					.uline.clearfix(data-uid="#{fuser.id}")
+						img.uimage(data-uid="#{fuser.id}", src="https://graph.facebook.com/#{ fuser.id }/picture?type=square")
 						.name
-							.username #{fuser.username}
+							a.username(data-uid="#{fuser.id}", href="/profile/#{fuser.id}") #{fuser.username}
 							.displayname #{fuser.name}
 						if fuser.canFollow
-							.follow-btn Follow
+							.follow-btn(data-uid="#{fuser.id}") Follow
 						else if fuser.canUnFollow
-							.unfollow-btn UnFollow
+							.unfollow-btn(data-uid="#{fuser.id}") UnFollow
 			else
 				div not found!
 
 
 	footer
-
+	input#profile_id(type="hidden",value="#{other.id}")
 block scripts
 	script(type='text/javascript')
 

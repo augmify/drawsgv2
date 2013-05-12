@@ -50,7 +50,7 @@ block main
 			#images
 				if images.length > 0
 					each img in images
-						.list-img-item
+						.list-img-item(data-imgid="#{img._id}")
 							#meta
 								a(href="/profile/#{ img.uid }")
 									img#uimage(src="https://graph.facebook.com/#{ img.uid }/picture?type=square")
@@ -61,7 +61,7 @@ block main
 							#info
 								.row#likes
 									.icon
-									.text <span id='likescount'>#{ img.likes.length }</span> likes
+									.text <span class='likescount'>#{ img.likes.length }</span> likes
 								.row#comments
 									.icon
 									.text 
@@ -78,18 +78,18 @@ block main
 												span.comment #{comment.comment}
 							#buttons
 								if user == "guest"
-									.button#share(data-imgid="#{img._id}")
+									.button.share(data-imgid="#{img._id}")
 										.btimage
 								else 
 									if img.likes.length>0
-										#like.button.liked(data-imgid="#{img._id}")
+										.like.button.liked(data-imgid="#{img._id}")
 											.btimage
 									else
-										#like.button(data-imgid="#{img._id}")
+										.like.button(data-imgid="#{img._id}")
 											.btimage
-									#comment.button(data-imgid="#{img._id}") 
+									.comment.button(data-imgid="#{img._id}") 
 										.btimage
-									#share.button(data-imgid="#{img._id}")
+									.share.button(data-imgid="#{img._id}")
 										.btimage
 								div(style="clear:both")
 				else

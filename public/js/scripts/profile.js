@@ -54,8 +54,13 @@ $(function(){
 	$('#follow').click(function(){
             var _followId =  $('#follower_id').val();
             $.post('/follow', {followId:_followId},function(response){
-                    alert(reponse);
-                Location.reload();
+                location.reload();
+            });
+	});
+        $('#unfollow').click(function(){
+            var _followId =  $('#follower_id').val();
+            $.post('/unfollow', {unfollowId:_followId},function(response){
+                location.reload();
             });
 	});
         $('#follower-count').click(function(){
@@ -117,12 +122,15 @@ $(function(){
 	//actions
 	var like = function(){
             var imgid = $(this).data("imgid");
+            var imgItem = $('.list-img-item[data-imgid="'+ imgid +'"]');
+            var likeItem = imgItem.find('.like');
+            var countItem = imgItem.find('.likescount');
             var posturl = "/image/"+imgid;
-            if ($("#like").hasClass("liked")) {
+            if (likeItem.hasClass("liked")) {
                     //update display
-                    $("#likescount").html( parseInt($("#likescount").html(),10) - 1 );
+                    countItem.html( parseInt(countItem.html(),10) - 1 );
                     //update button
-                    $("#like").removeClass("liked");
+                    likeItem.removeClass("liked");
                     //post
                     $.post(posturl,{
                             type: "unlike"
@@ -131,9 +139,9 @@ $(function(){
                     });
             } else {
                     //update display
-                    $("#likescount").html( parseInt($("#likescount").html(),10) + 1 );
+                    countItem.html( parseInt(countItem.html(),10) + 1 );
                     //update button
-                    $("#like").addClass("liked");
+                    likeItem.addClass("liked");
                     $.post(posturl,{
                             type: "like"
                     },function(response){
@@ -165,17 +173,17 @@ $(function(){
 	if (is_touch_device()){
 		$("#browse").tap(browse);
 		$("#home").tap(app);
-		$("#like").tap(like);
-		$("#delete").tap(del);
-		$("#comment").tap(comment);
-		$("#share").tap(share);
+		$(".like").tap(like);
+		$(".delete").tap(del);
+		$(".comment").tap(comment);
+		$(".share").tap(share);
 
 	} else {
 		$("#browse").on('click', browse);
 		$("#home").on('click', app);
-		$("#like").on('click', like);
-		$("#share").on('click', share);
-		$("#comment").on('click',comment);
-		$("#delete").on('click',del);
+		$(".like").on('click', like);
+		$(".share").on('click', share);
+		$(".comment").on('click',comment);
+		$(".delete").on('click',del);
 	}
 });

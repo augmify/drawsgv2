@@ -98,7 +98,7 @@ exports.unfollow = function(req, res) {
         }
         res.send('success');
     });
-}
+};
 
 exports.followers = function(req, res) {
     if (!req.loggedIn)
@@ -131,6 +131,44 @@ exports.followers = function(req, res) {
             variables.user = req.user;
             variables.other = objusr;
             variables.userArray = followers;
+            variables.title= "Followers";
+            res.render('follow', variables);
+        });
+    });
+};
+
+exports.followings = function(req, res) {
+    if (!req.loggedIn)
+        return res.redirect('/');
+    var userid = req.params.userid;
+    mongo.findUserById(userid, function(err, objusr) {
+        if (err || !objusr) {
+            //smth went wrong handle err
+            res.send("error");
+            return;
+        }
+        objusr.followings = objusr.followings||[];
+        mongo.findUsers(objusr.followings, function(err, followings){
+            if (err || !followings) {
+                res.send("error");
+                return;
+            }
+            
+            for(var i=0; i<followings.length; i++){
+                var f = followings[i];
+                var fids = f.followings || [];
+                if(f.id!=userid && fids.indexOf(userid)<0){
+                    f.canFollow = true;
+                }else if(f.id !=userid && fids.indexOf(userid)>-1){
+                    f.canUnFollow = true;
+                }
+            }
+            
+            var variables = utils.bootstrap(req);
+            variables.user = req.user;
+            variables.other = objusr;
+            variables.userArray = followings;
+            variables.title= "Followings";
             res.render('follow', variables);
         });
     });

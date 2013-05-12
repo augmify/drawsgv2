@@ -114,7 +114,32 @@ db.open(function(err, db) {
                 callback(err, result);
             });
         });
-    }
+    };
+    
+    exports.unfollow = function(uid, fuid, callback){
+        db.collection('users', function(err, users){
+            if (err) {
+                console.log(err);
+                return callback(err, {});
+            }
+            users.update({
+                id : uid
+            }, {
+                $pull :{followings: fuid}
+            }, {safe: true}, function(err, result){
+                callback(err, result);
+            });
+            users.update({
+                id : fuid
+            }, {
+                $pull :{followers: uid}
+            }, {safe: true}, function(err, result){
+                callback(err, result);
+            });
+        });
+    };
+    
+    
     /**
     * Image
     */
