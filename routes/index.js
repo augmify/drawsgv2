@@ -120,9 +120,9 @@ exports.followers = function(req, res) {
             for(var i=0; i<followers.length; i++){
                 var f = followers[i];
                 var fids = f.followers || [];
-                if(f.id!=userid && fids.indexOf(userid)<0){
+                if(f.id!==userid && fids.indexOf(userid)<0){
                     f.canFollow = true;
-                }else if(f.id !=userid && fids.indexOf(userid)>-1){
+                }else if(f.id !==userid && fids.indexOf(userid)>-1){
                     f.canUnFollow = true;
                 }
             }
@@ -155,11 +155,11 @@ exports.followings = function(req, res) {
             }
             
             for(var i=0; i<followings.length; i++){
-                var f = followings[i];
-                var fids = f.followings || [];
-                if(f.id!=userid && fids.indexOf(userid)<0){
+                var f = followers[i];
+                var fids = f.followers || [];
+                if(f.id!==userid && fids.indexOf(userid)<0){
                     f.canFollow = true;
-                }else if(f.id !=userid && fids.indexOf(userid)>-1){
+                }else if(f.id !==userid && fids.indexOf(userid)>-1){
                     f.canUnFollow = true;
                 }
             }
