@@ -7667,8 +7667,8 @@
                   <a class="flyout-btn" href="#" title="Toggle"><span></span></a>\
                   <ul class="flyout flyout-init">\
                     <li><a href="#" class="button clear-button danger" style="background: url(/img/senceui/draw/button-06.png) no-repeat center center;background-size: 32px 32px;"><span></span></a></li>\
-                    <li><a href="#" class="button btn-warning undo-button" style="background: url(/img/senceui/draw/drawSG_ui-11.png) no-repeat center center;background-size: 32px 32px;"><span></span></a></li>\
-                    <li><a href="#" class="button btn-warning redo-button" style="background: url(/img/senceui/draw/drawSG_ui-10.png) no-repeat center center;background-size: 32px 32px;"><span></span></a></li>\
+                    <li><a href="#" class="button btn-warning undo-button" style="background: url(/img/senceui/draw/drawSG_ui-11.png) no-repeat center center;background-size: 25px 25px;"><span></span></a></li>\
+                    <li><a href="#" class="button btn-warning redo-button" style="background: url(/img/senceui/draw/drawSG_ui-10.png) no-repeat center center;background-size: 25px 25px;"><span></span></a></li>\
                     <li><a href="#" class="button btn-inverse zoom-out-button" style="background: url(/img/senceui/draw/button-05.png) no-repeat center center;background-size: 32px 32px;"><span></span></a></li>\
                     <li><a href="#" class="button btn-inverse zoom-in-button" style="background: url(/img/senceui/draw/button-04.png) no-repeat center center;background-size: 32px 32px;"><span></span></a></li>\
                   </ul>\
