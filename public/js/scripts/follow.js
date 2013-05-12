@@ -73,7 +73,7 @@ function post_to_url(path, params, method) {
     };
     var unfollow = function(){
         var _followId =  $(this).data("uid");
-        $.post('/follow', {followId:_followId},function(response){
+        $.post('/unfollow', {unfollowId:_followId},function(response){
             location.reload();
         });
     };
@@ -82,20 +82,6 @@ function post_to_url(path, params, method) {
         var profileid =  $(this).data("uid");
         window.location.href = '/profile/'+profileid;
     };
-    
-    
-    $('#follow').click(function(){
-            
-	});
-        $('#unfollow').click(function(){
-            var _followId =  $('#follower_id').val();
-            $.post('/unfollow', {followId:_followId},function(response){
-                    alert(reponse);
-                location.reload();
-            });
-	});
-    
-    
     if (is_touch_device()){
 		$("#back").tap(back);
 		$(".follow-btn").tap(follow);
